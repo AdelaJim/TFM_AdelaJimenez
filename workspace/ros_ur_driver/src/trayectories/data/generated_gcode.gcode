@@ -1,5 +1,3 @@
-M140 S200 ; Configurar temperatura de la cama a 200 grados
-M104 S80 ; Configurar temperatura del extrusor a 80 grados
 M190 S200 ; Esperar a que la cama alcance la temperatura
 M109 S80 ; Esperar a que el extrusor alcance la temperatura
 M17 ; Activar motores
