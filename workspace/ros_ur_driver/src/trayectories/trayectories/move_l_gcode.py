@@ -1,15 +1,5 @@
 #  DESCRIPCIÓN
-#
-# Este nodo de ROS 2 permite la ejecución de trayectorias definidas en archivos G-code para un robot manipulador.  
-# Utiliza el módulo `parseo_gcode.py` para extraer las posiciones, orientaciones y velocidades del G-code,  
-# convirtiéndolos en waypoints que pueden ser procesados por MoveIt! para generar una trayectoria cartesiana.
-
-# ### Funcionamiento:
-# 1. Carga del G-code: Lee el archivo G-code especificado en el parámetro `trayectoria_dato`.
-# 2. Procesamiento del G-code: Extrae posiciones, orientaciones y velocidades mediante `parseo_gcode.py`.
-# 3. Generación de trayectoria: Usa MoveIt! para calcular la trayectoria cartesiana a partir de los waypoints extraídos.
-# 4. Ejecución de la trayectoria: Envía la trayectoria al robot mediante ROS 2 y MoveIt!.
-# 5. Control de velocidad: Ajusta la velocidad de ejecución mediante el parámetro `factor_escala`.
+#  WIP
 #
 # Los parámetros de entrada al nodo son:
 #
@@ -23,8 +13,6 @@ import os
 
 # Agregar la ruta del directorio actual al path de Python
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
-
 
 # Librerías de ros
 import rclpy
@@ -56,6 +44,7 @@ import csv
 import os
 import datetime
 import git
+import serial
 
 # Esta clase es la respondable de calcular la trayectoria cartesiana.
 # Dependiendo del número de puntos, complejidad de la trayectoria y pose inicial del robot puede demeorarse más o menos tiempo.
@@ -266,13 +255,14 @@ class TrayectoryNodeL(Node):
         
         ##############################################
         # Parsear las posiciones desde el archivo G-code
-        
-        self.positions, Vel_impresion, Temp_cama, Temp_extrusor, Motores_on = parseo_gcode(file_path)
+        self.positions, Vel_impresion, self.Temp_cama, Temp_extrusor, Motores_on = parseo_gcode(file_path)
         #print(f"Las posiciones son: {self.positions}")
-        self.factor_escala = self.get_parameter('factor_escala').value
-        
+
         self.factor_escala=self.get_parameter('factor_escala').value
 
+        # Se inicia el proceso de setup: calentamiento de cama, extrusores y verificacion de posiciones
+        self.setup_process()
+        
         # Se invocan las clases de cálculo de trayectoria y mecanismo acción-cliente.
         self.cartesian_path_node= CartesianPathNode()
         self.action_client_node= MyActionClientNode()
@@ -282,11 +272,62 @@ class TrayectoryNodeL(Node):
         self.goal_names=[]
         self.calculo_trayectoria()
 
+        self.shutdown_process() 
         # Se indica el archivo de trayectoria dato que se ha tomado.
         print(f"Estoy corriendo el archivo de trayectoria {trayectoria}")
 
-    
+    def setup_process(self):
+        
+        # Calentar la cama
+        self.open_serial_port() 
+        print('Iniciando proceso de setup...')
+        self.send_temp_to_arduino()
+        self.wait_for_temperature_confirmation()
+        print('Setup completado. Listo para ejecutar la trayectoria.')
 
+    def send_temp_to_arduino(self):
+        print(f'Enviando temperatura de la cama a Arduino: {self.Temp_cama}°C')
+        
+        mensaje = f"{self.Temp_cama}\n"
+        # print(f"Mensaje a enviar: {mensaje}")
+        
+        self.serial_port.write(mensaje.encode())  
+        self.serial_port.flush()  # Aseguro que los datos se envíen
+        print('Mensaje enviado a Arduino')
+
+    def wait_for_temperature_confirmation(self):
+        print('Esperando confirmación de temperatura de la cama desde Arduino...')
+        while True:
+            if self.serial_port.in_waiting > 0:
+                message = self.serial_port.readline().decode().strip()
+
+                if message == "TEMP_OK":
+                    print(f'{message}: Temperatura alcanzada, continuando ejecución.')
+                    self.serial_port.close()
+                    break
+                else :
+                    print(f'{message}')    
+                    
+    def open_serial_port(self):
+        try:
+            self.serial_port = serial.Serial('/dev/ttyACM0', 2400, timeout=1)  # Le doy un tiempo de espera de 60 segundos
+            print('Puerto Serial abierto correctamente')
+        except serial.SerialException as e:
+            print(f'Error al abrir el puerto Serial: {e}')
+            return
+        
+    def shutdown_process(self):
+        print('Iniciando proceso de apagado...')
+        
+        # Enfriar la cama
+        self.open_serial_port()
+        mensaje = "OFF\n"
+        print(f"Enviando señal de apagado de la cama: {mensaje.strip()}")
+        self.serial_port.write(mensaje.encode())  
+        self.serial_port.flush()  # Asegurar que el mensaje se envía completamente
+        self.serial_port.close()
+        print("Señal de apagado de cama enviada correctamente.")
+    
     def calculo_trayectoria(self):
 
         # Asignación de posiciones dato desde el gcode
@@ -314,8 +355,7 @@ class TrayectoryNodeL(Node):
         # Mensaje interno de arrancar el logger.
         # self.arranca_logger=True
         self.publish_arranca_logger()
-
-   
+ 
     def get_data_path(self):
 
         # Obtener la ruta al directorio actual
