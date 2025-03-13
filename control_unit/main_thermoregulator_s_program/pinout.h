@@ -1,0 +1,4 @@
+#define MAX6675_SO D6 // GPIO13
+#define MAX6675_CS D8 // GPIO15
+#define MAX6675_SCK D5 // GPIO14
+#define RELAY D2
