@@ -359,7 +359,7 @@ class TemperatureControllerNode(Node):
             if self.serial_port.in_waiting > 0:
                 message = self.serial_port.readline().decode().strip()
                 if message == "TEMP_OK" and self.publicar_temp_ok:
-                    self.get_logger().info(f'{message}:Temperatura alcanzada, continuando ejecución.')
+                    self.get_logger().info(f'{message}: Continuando ejecución.')
                     self.temp_ok_pub.publish(Bool(data=True))
                     self.publicar_temp_ok = False    # Solo se publica una vez
                     break
@@ -377,16 +377,16 @@ class TemperatureControllerNode(Node):
         if self.serial_port.in_waiting > 0:
             message = self.serial_port.readline().decode().strip()
             self.current_temp = float(message)
-        
-        temp_msg = Float64()
-        temp_msg.data = self.current_temp
-        self.temp_pub.publish(temp_msg)
+            # self.get_logger().info(f'Temperatura actual de la cama: {self.current_temp}°C')
+            temp_msg = Float64()
+            temp_msg.data = self.current_temp
+            self.temp_pub.publish(temp_msg)
     
 
 
 
-# Clase principal: MasterMind
-class MasterNodeL(Node):
+# Clase principal: MasterNode
+class MasterNode(Node):
     # Constructor
     def __init__(self):
         super().__init__('Master_node')
@@ -505,20 +505,21 @@ class MasterNodeL(Node):
             #print(f'Posición añadida: {poses}')
 
         # Se solicita una trayectoria articular solución.
-        self.get_logger().info(f'El tamaño del vector de entrada es {len(self.goal_names)}')
+        #self.get_logger().info(f'El tamaño del vector de entrada es {len(self.goal_names)}')
         trajectory_solution= self.cartesian_path_node.compute_cartesian_path(self.goal_names, self.factor_escala)
-
+        #self.get_logger().info(f'La trayectoria calculada tiene {len(trajectory_solution.joint_trajectory.points)} puntos')
+        
         # Cuando se tiene la trayectoria solución se manda ejecutar.
         if trajectory_solution:
             self.get_logger().info('Se ha calculado la trayectoria con éxito, ejecutando ...')
             self.action_client_node.execute_trajectory(trajectory_solution)
-            self.trayectoria_completada = True   #NO SE SI VA AQUI. COMO DETECTO QUE SE HA FINALIZADO?
+            # self.trayectoria_completada = True   #NO SE SI VA AQUI. COMO DETECTO QUE SE HA FINALIZADO?
             # self.estado = "SHUTDOWN"
             self.get_logger().info(f"Estoy corriendo el archivo de trayectoria {self.get_parameter('trayectoria_dato').value}")
         else:
             self.get_logger().info('Fallo en el cálculo de trayectoria')
         
-        self.get_logger().info('--- FIN DE TRAYECTORIA ---')
+        # self.get_logger().info('--- FIN DE TRAYECTORIA ---')
    
         # Mensaje interno de arrancar el logger.
         # self.arranca_logger=True
@@ -540,14 +541,18 @@ def main(args=None):
     rclpy.init(args=args)
 
     # Esto lo necesito ara que existan los tres a la vez, y me salgan en ros2 node list
-    trajectory_node = MasterNodeL()
+    trajectory_node = MasterNode()
     gcode_parser_node = GcodeParserNode()
     temp_controller_node = TemperatureControllerNode()
+    #cartesian_path_node = CartesianPathNode()
+    #action_client_node = MyActionClientNode()
 
     executor = MultiThreadedExecutor()
     executor.add_node(trajectory_node)
     executor.add_node(gcode_parser_node)
     executor.add_node(temp_controller_node)
+    #executor.add_node(cartesian_path_node)
+    #executor.add_node(action_client_node)
 
     try:
         executor.spin()
@@ -555,6 +560,8 @@ def main(args=None):
         trajectory_node.destroy_node()
         gcode_parser_node.destroy_node()
         temp_controller_node.destroy_node()
+        #cartesian_path_node.destroy_node()
+        #action_client_node.destroy_node()
         rclpy.shutdown()
 
 if __name__== '__main__':

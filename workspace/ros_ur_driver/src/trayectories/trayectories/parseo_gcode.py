@@ -39,7 +39,7 @@ def parseo_gcode(file_path):
                         try:
                             if key == 'S':  # Verificamos si el parámetro es de temperatura
                                 Temp_extrusor = float(value)
-                                print(f"Temperatura del extrusor establecida a: {Temp_extrusor}°C")
+                                # print(f"Temperatura del extrusor establecida a: {Temp_extrusor}°C")
                         except ValueError as e:  # Si no se puede convertir a float, mostramos un mensaje de advertencia
                             print(f"Advertencia: No se pudo convertir '{value}' en la línea: {line.strip()}")
                             continue
@@ -53,7 +53,7 @@ def parseo_gcode(file_path):
                         try:
                             if key == 'S':  # Verificamos si el parámetro es de temperatura
                                 Temp_cama = float(value)
-                                print(f"Temperatura de la cama establecida a: {Temp_cama}°C")
+                                # print(f"Temperatura de la cama establecida a: {Temp_cama}°C")
                         except ValueError as e:  # Si no se puede convertir a float, mostramos un mensaje de advertencia
                             print(f"Advertencia: No se pudo convertir '{value}' en la línea: {line.strip()}")
                             continue               
@@ -62,10 +62,10 @@ def parseo_gcode(file_path):
             # Actualizar el estado de motores
             elif 'M17' in line:  # Encender motores
                 motores_on = 1
-                print(f"Estado motores: {motores_on}")
+                # print(f"Estado motores: {motores_on}")
             elif 'M18' in line or 'M84' in line:  # Apagar motores
                 motores_on = 0
-                print(f"Estado motores: {motores_on}")
+                # print(f"Estado motores: {motores_on}")
 
             elif line.startswith('G1'):  # Movimiento con extrusion
                 poses_aux = [0] * 7
