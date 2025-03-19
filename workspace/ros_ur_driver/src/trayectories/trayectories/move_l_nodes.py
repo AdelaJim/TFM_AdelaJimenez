@@ -19,21 +19,21 @@
 #  8. El Master envía `OFF` al nodo de control de temperatura, que lo reenvía al serial.
 #  
 #  MODULARIZACIÓN:
-#  - TrayectoryNodeL(): Nodo principal que coordina la ejecución de la trayectoria. Asume el rol de Master.
+#  - MasterNodeL(): Nodo principal que coordina la ejecución de la trayectoria. Asume el rol de Master.
 #  - CartesianPathNode(): Nodo independiente para el cálculo de la trayectoria cartesiana.
 #  - MyActionClientNode(): Nodo separado para la ejecución de la trayectoria con MoveIt!.
 #  - TemperatureControllerNode(): Nodo independiente para controlar la temperatura de la cama.
 #  - GcodeParserNode(): Nodo separado para la lectura y parseo del archivo G-code.
 #
 #  Comunicación entre nodos mediante tópicos: 
-#  - `/gcode/positions` (String): Publicado por `GcodeParserNode`, suscrito por `TrayectoryNodeL`.
-#  - `/gcode/temp_cama` (Float64): Publicado por `GcodeParserNode`, suscrito por `TrayectoryNodeL`.
-#  - `/gcode/temp_extrusor` (Float64): Publicado por `GcodeParserNode`, suscrito por `TrayectoryNodeL`.
-#  - `/gcode/motores_on` (Bool): Publicado por `GcodeParserNode`, suscrito por `TrayectoryNodeL`.
-#  - `/trayectory/temp_cama` (Float64): Publicado por `TrayectoryNodeL`, suscrito por `TemperatureControllerNode`.
-#  - `/trayectory/temp_ok` (Bool): Publicado por `TemperatureControllerNode`, suscrito por `TrayectoryNodeL`.
-#  - `/trayectory/shutdown` (Bool): Publicado por `TrayectoryNodeL`, suscrito por `TemperatureControllerNode`. PODRIA SUSCRIBIRSE A MAS NODOS
-#  - `/monitor/temp_cama` (Float64): Publicado por `TemperatureControllerNode`, suscrito por `TrayectoryNodeL`. (cada 2 sec)
+#  - `/gcode/positions` (String): Publicado por `GcodeParserNode`, suscrito por `MasterNodeL`.
+#  - `/gcode/temp_cama` (Float64): Publicado por `GcodeParserNode`, suscrito por `MasterNodeL`.
+#  - `/gcode/temp_extrusor` (Float64): Publicado por `GcodeParserNode`, suscrito por `MasterNodeL`.
+#  - `/gcode/motores_on` (Bool): Publicado por `GcodeParserNode`, suscrito por `MasterNodeL`.
+#  - `/trajectory/temp_cama` (Float64): Publicado por `MasterNodeL`, suscrito por `TemperatureControllerNode`.
+#  - `/trajectory/temp_ok` (Bool): Publicado por `TemperatureControllerNode`, suscrito por `MasterNodeL`.
+#  - `/trajectory/shutdown` (Bool): Publicado por `MasterNodeL`, suscrito por `TemperatureControllerNode`. PODRIA SUSCRIBIRSE A MAS NODOS
+#  - `/monitor_temp_cama` (Float64): Publicado por `TemperatureControllerNode`, suscrito por `MasterNodeL`. (cada 2 sec)
 
 import sys
 import os
@@ -332,11 +332,11 @@ class TemperatureControllerNode(Node):
         super().__init__('temperature_controller_node')
         
         # Suscribirse al tópico de temperatura de la cama
-        self.create_subscription(Float64, '/trayectory/temp_cama', self.temp_cama_callback, 10)
-        self.create_subscription(Bool, '/trayectory/shutdown', self.shutdown_callback, 10)
+        self.create_subscription(Float64, '/trajectory/temp_cama', self.temp_cama_callback, 10)
+        self.create_subscription(Bool, '/trajectory/shutdown', self.shutdown_callback, 10)
 
         # Publicador para la temperatura monitoreada y ack temp_ok
-        self.temp_ok_pub = self.create_publisher(Bool, '/trayectory/temp_ok', 10)
+        self.temp_ok_pub = self.create_publisher(Bool, '/trajectory/temp_ok', 10)
         self.temp_pub = self.create_publisher(Float64, '/monitor_temp_cama', 10)
 
         self.current_temp = 0.0
@@ -411,14 +411,14 @@ class MasterNodeL(Node):
         self.create_subscription(String, '/gcode/positions', self.positions_callback, 10)
         self.create_subscription(Float64, '/gcode/temp_cama', self.temp_cama_callback, 10)
         self.create_subscription(Float64, '/monitor_temp_cama', self.temp_monitor_callback, 10)
-        self.create_subscription(Bool, '/trayectory/temp_ok', self.temp_ok_callback, 10)
+        self.create_subscription(Bool, '/trajectory/temp_ok', self.temp_ok_callback, 10)
         self.create_subscription(Float64, '/gcode/temp_extrusor', self.temp_extrusor_callback, 10)
         self.create_subscription(Bool, '/gcode/motores_on', self.motores_on_callback, 10)
         self.create_subscription(String, '/gcode/vel_impresion', self.vel_impresion_callback, 10)
         
         # Publshers de topics
-        self.temp_cama_pub = self.create_publisher(Float64, '/trayectory/temp_cama', 10)
-        self.shutdown_pub = self.create_publisher(Bool, '/trayectory/shutdown', 10)
+        self.temp_cama_pub = self.create_publisher(Float64, '/trajectory/temp_cama', 10)
+        self.shutdown_pub = self.create_publisher(Bool, '/trajectory/shutdown', 10)
 
         # inicialización de variables de control
         self.estado = "INICIO"  # Estado inicial
@@ -540,19 +540,19 @@ def main(args=None):
     rclpy.init(args=args)
 
     # Esto lo necesito ara que existan los tres a la vez, y me salgan en ros2 node list
-    trayectory_node = MasterNodeL()
+    trajectory_node = MasterNodeL()
     gcode_parser_node = GcodeParserNode()
     temp_controller_node = TemperatureControllerNode()
 
     executor = MultiThreadedExecutor()
-    executor.add_node(trayectory_node)
+    executor.add_node(trajectory_node)
     executor.add_node(gcode_parser_node)
     executor.add_node(temp_controller_node)
 
     try:
         executor.spin()
     finally:
-        trayectory_node.destroy_node()
+        trajectory_node.destroy_node()
         gcode_parser_node.destroy_node()
         temp_controller_node.destroy_node()
         rclpy.shutdown()
