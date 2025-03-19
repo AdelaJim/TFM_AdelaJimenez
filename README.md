@@ -1,4 +1,4 @@
-# TFM_MiguelLerinAlonso
+# Home
 
 En este repositorio se guarda todo el software desarrollando para poder realizar una instalación rápida del sistema.
 
