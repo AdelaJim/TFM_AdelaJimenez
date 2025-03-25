@@ -279,6 +279,7 @@ class GcodeParserNode(Node):
         self.read_gcode_file()
 
     def read_gcode_file(self):
+        self.get_logger().info("Leyendo archivo G-code...")
         trayectoria = self.get_parameter('trayectoria_dato').value
         file_path = self.get_data_path() + trayectoria
 
@@ -295,6 +296,7 @@ class GcodeParserNode(Node):
 
             pos_msg.data = str(positions)
             self.positions_pub.publish(pos_msg)
+            self.get_logger
             
             vel_impresion_msg = String()   # TBD. concretar con encargados de extrusor + gcode
             vel_impresion_msg.data = str(vel_impresion)
@@ -340,7 +342,7 @@ class TemperatureControllerNode(Node):
         self.temp_pub = self.create_publisher(Float64, '/monitor_temp_cama', 10)
 
         self.current_temp = 0.0
-        self.timer_ = self.create_timer(2.0, self.publish_monitored_temperature)  # Publicar temperatura cada 2 segundos
+        self.timer_ = self.create_timer(10.0, self.publish_monitored_temperature)  # Publicar temperatura cada X segundos
 
         self.serial_port = serial.Serial('/dev/ttyACM0', 2400, timeout=1)
         self.get_logger().info('Puerto Serial abierto correctamente')
@@ -427,6 +429,7 @@ class MasterNode(Node):
         self.cama_ok = False
         self.extrusor_ok = True # por ahora no tenemos el nodo para esto
         self.trayectoria_completada = False
+        self.ejecutando = False
         self.publicar_temp = True # Se usa para detener la publicacion de la temperatura
         self.goal_names=[]
         self.factor_escala=self.get_parameter('factor_escala').value
@@ -439,24 +442,28 @@ class MasterNode(Node):
                 self.estado = "SETUP"
 
         elif self.estado == "SETUP":
-            self.setup_process()
+            if self.publicar_temp:
+                self.setup_process()
+                self.publicar_temp = False
 
         elif self.estado == "EJECUTAR_TRAYECTORIA":
             if self.cama_ok and self.extrusor_ok:
                 self.calculo_trayectoria()
+                # esto es para que la maquina de estados solo entre una vez aqui.
+                self.ejecutando = True
+                self.cama_ok = False
+                self.extrusor_ok = False 
 
         elif self.estado == "SHUTDOWN":
             self.shutdown_process()
 
     def setup_process(self):
-        if self.publicar_temp:
-            self.get_logger().info('Iniciando proceso de setup...')
-            # Enviamos la temperatura de la cama al nodo de control de temperatura
-            temp_cama_msg = Float64()
-            temp_cama_msg.data = self.Temp_cama
-            self.temp_cama_pub.publish(temp_cama_msg)
-            self.publicar_temp = False
-            # Enviamos mas cosas en un futuro
+        self.get_logger().info('Iniciando proceso de setup...')
+        # Enviamos la temperatura de la cama al nodo de control de temperatura
+        temp_cama_msg = Float64()
+        temp_cama_msg.data = self.Temp_cama
+        self.temp_cama_pub.publish(temp_cama_msg)
+        # Enviamos mas cosas en un futuro
         
     def shutdown_process(self):
         if self.trayectoria_completada: # Se publica 1 topic, y todas las cosas que se tengan que apagar se suscriben a ese topic.
@@ -474,7 +481,7 @@ class MasterNode(Node):
         self.Temp_cama = msg.data    
     
     def temp_monitor_callback(self, msg):
-        if self.cama_ok:
+        if self.ejecutando:
             self.get_logger().info(f"Monitoreo de temperatura de la cama: {msg.data}°C")
 
     def temp_ok_callback(self, msg):
@@ -493,7 +500,7 @@ class MasterNode(Node):
     def vel_impresion_callback(self, msg):
         self.Vel_impresion = msg.data
         
-    # Método de cálculo de trayectoria. A continuacion, se ejecuta la trayectoria. Al finalizarla, se inicia el shutwdown.
+    # Método de cálculo de trayectoria. A continuacion, se ejecuta la trayectoria. 
     def calculo_trayectoria(self):
         self.get_logger().info("Calculando trayectoria...")
         # Asignación de posiciones dato desde el gcode
