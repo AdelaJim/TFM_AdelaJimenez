@@ -108,7 +108,14 @@ def parseo_gcode(file_path):
         if poses_aux:  # Aseguramos añadir la última entrada procesada
             poses.append(poses_aux)
 
-    return poses, Vel_impresion, Temp_cama, Temp_extrusor, motores_on # None indica que nse ha terminado todo el archivo
+        # Asegurar que Vel_impresion tenga al menos una entrada antes de intentar convertir. Por ahora, se va a imprimir a velocidad constante, si en un futuro se modifica la velocidad, eliminar esta parte para quedarte solo con el vector 
+        # if Vel_impresion:
+        #     try:
+        #         Vel_impresion = float(Vel_impresion[0])
+        #     except (ValueError, TypeError) as e:
+        #         print(f"Advertencia: No se pudo convertir a float la velocidad de impresión: {Vel_impresion[0]}")
+
+    return poses, Vel_impresion[0], Temp_cama, Temp_extrusor, motores_on # None indica que nse ha terminado todo el archivo
     
 
 

@@ -1,7 +1,6 @@
 #  DESCRIPCIÓN
-#  Este script se encarga de ejecutar trayectorias en un UR10 basadas en un archivo G-code.
-#  Incluye la gestión del calentamiento de la cama, el envío de temperatura a Arduino, 
-#  la ejecución de la trayectoria con MoveIt! 
+#  Este script coordina la ejecución de trayectorias no planas en un UR10 a partir de un archivo G-code,
+#  integrando el control de periféricos mediante ROS 2 y comunicación serie con microcontroladores.
 #
 #  Parámetros de entrada:
 #  * trayectoria_dato: Nombre del archivo G-code con los puntos de la trayectoria.
@@ -9,31 +8,40 @@
 #  * arrancar_logger: Indica si se debe iniciar el sistema de logging de datos.
 #
 #  Flujo general:
-#  1. Lee el G-code y obtiene los datos de la trayectoria.
-#  2. Recibe la temperatura desde el nodo de parseo y la envía al nodo de control de temperatura.
-#  3. El nodo de control de temperatura abre el puerto serie y envía la temperatura a Arduino.
-#  4. Mientras se alcanza la temperatura de consigna, se monitorean los mensajes del serial.
-#  5. Cuando se recibe `TEMP_OK`, el Master ejecuta la trayectoria.
-#  6. Se sigue monitoreando la temperatura de la cama durante la ejecución.
-#  7. Al finalizar la trayectoria, el Master inicia el proceso de apagado (shutdown).
-#  8. El Master envía `OFF` al nodo de control de temperatura, que lo reenvía al serial.
-#  
-#  MODULARIZACIÓN:
-#  - MasterNodeL(): Nodo principal que coordina la ejecución de la trayectoria. Asume el rol de Master.
-#  - CartesianPathNode(): Nodo independiente para el cálculo de la trayectoria cartesiana.
-#  - MyActionClientNode(): Nodo separado para la ejecución de la trayectoria con MoveIt!.
-#  - TemperatureControllerNode(): Nodo independiente para controlar la temperatura de la cama.
-#  - GcodeParserNode(): Nodo separado para la lectura y parseo del archivo G-code.
+#  1. Se parsea el archivo G-code para extraer trayectorias y parámetros de impresión.
+#  2. Se envían las temperaturas objetivo a los nodos controladores de cama y extrusor.
+#  3. Cada nodo establece la comunicación con su respectivo Arduino, que gestiona el calentamiento.
+#  4. Se espera confirmación (`TEMP_OK`) de ambos nodos para continuar.
+#  5. Se calcula la trayectoria cartesiana desde los puntos definidos en el G-code.
+#  6. Se ejecuta la trayectoria con MoveIt!, mientras se monitorizan temperaturas.
+#  7. Al finalizar, se publica una señal de `shutdown` que activa la parada de los sistemas térmicos.
 #
-#  Comunicación entre nodos mediante tópicos: 
-#  - `/gcode/positions` (String): Publicado por `GcodeParserNode`, suscrito por `MasterNodeL`.
-#  - `/gcode/temp_cama` (Float64): Publicado por `GcodeParserNode`, suscrito por `MasterNodeL`.
-#  - `/gcode/temp_extrusor` (Float64): Publicado por `GcodeParserNode`, suscrito por `MasterNodeL`.
-#  - `/gcode/motores_on` (Bool): Publicado por `GcodeParserNode`, suscrito por `MasterNodeL`.
-#  - `/trajectory/temp_cama` (Float64): Publicado por `MasterNodeL`, suscrito por `TemperatureControllerNode`.
-#  - `/trajectory/temp_ok` (Bool): Publicado por `TemperatureControllerNode`, suscrito por `MasterNodeL`.
-#  - `/trajectory/shutdown` (Bool): Publicado por `MasterNodeL`, suscrito por `TemperatureControllerNode`. PODRIA SUSCRIBIRSE A MAS NODOS
-#  - `/monitor_temp_cama` (Float64): Publicado por `TemperatureControllerNode`, suscrito por `MasterNodeL`. (cada 2 sec)
+#  
+#  MODULARIZACIÓN DE NODOS:
+#  - MasterNode(): Nodo principal que coordina la ejecución y publica órdenes globales.
+#  - GcodeParserNode(): Lee el G-code y publica los parámetros extraídos.
+#  - BedControllerNode(): Controla la temperatura de la cama y monitoriza el estado.
+#  - ExtruderControllerNode(): Controla la temperatura del extrusor y los motores paso a paso.
+#  - CartesianPathNode(): Calcula la trayectoria cartesiana.
+#  - MyActionClientNode(): Ejecuta la trayectoria calculada a través de MoveIt!.
+
+#  COMUNICACIÓN:
+#  - `/gcode/positions` (String): Puntos de trayectoria [GcodeParserNode → MasterNode]
+#  - `/gcode/temp_cama` (Float64): Temperatura cama [GcodeParserNode → MasterNode]
+#  - `/gcode/temp_extrusor` (Float64): Temperatura extrusor [GcodeParserNode → MasterNode]
+#  - `/gcode/motores_on` (Bool): Motores del extrusor [GcodeParserNode → MasterNode]
+#  - `/gcode/vel_impresion` (String): Velocidad de impresión [GcodeParserNode → MasterNode]
+#  - `/trajectory/temp_cama` (Float64): Temperatura consigna cama [MasterNode → BedControllerNode]
+#  - `/trajectory/temp_extrusor` (Float64): Temperatura consigna extrusor [MasterNode → ExtruderControllerNode]
+#  - `/trajectory/vel_impresion` (String): Velocidad de impresión [MasterNode → ExtruderControllerNode]
+#  - `/check/cama_ok` (Bool): Confirmación de temperatura cama [BedControllerNode → MasterNode]
+#  - `/check/ext_ok` (Bool): Confirmación de temperatura extrusor [ExtruderControllerNode → MasterNode]
+#  - `/monitor/temp_cama` (Float64): Temperatura actual cama [BedControllerNode → MasterNode]
+#  - `/monitor/temp_extrusor` (Float64): Temperatura actual extrusor [ExtruderControllerNode → MasterNode]
+#  - `/shutdown` (Bool): Señal global de apagado [MasterNode → BedControllerNode & ExtruderControllerNode]
+#  - `/arranca_logger_topic` (Bool): Señal para iniciar el logger [MasterNode → LoggerNode]
+#  - `/execute_trajectory` (Action): Acción para ejecutar la trayectoria [MyActionClientNode → MoveIt!]
+#  - `/compute_cartesian_path` (Service): Servicio para calcular la trayectoria [CartesianPathNode → MoveIt!]
 
 import sys
 import os
@@ -59,6 +67,7 @@ from moveit_msgs.action import ExecuteTrajectory # Acción de ejecución de tray
 from builtin_interfaces.msg import Duration
 from parseo_gcode import parseo_gcode
 from rclpy.executors import MultiThreadedExecutor
+
 # Otras librerías útiles.
 import pandas as pd     # Para manejar datos y crear tablas.
 import matplotlib.pyplot as plt # Para hacer gráficos con los datos registrados.
@@ -259,7 +268,6 @@ class MyActionClientNode(Node):
 
 
 
-
 # Definir el nodo para la lectura del G-code. Se encarga de leer el archivo y publicar los datos necesarios
 class GcodeParserNode(Node):
     def __init__(self):
@@ -270,7 +278,7 @@ class GcodeParserNode(Node):
         self.temp_cama_pub = self.create_publisher(Float64, '/gcode/temp_cama', 10)
         self.temp_extrusor_pub = self.create_publisher(Float64, '/gcode/temp_extrusor', 10)
         self.motores_on_pub = self.create_publisher(Bool, '/gcode/motores_on', 10)
-        self.vel_impresion_pub = self.create_publisher(String, '/gcode/vel_impresion', 10)
+        self.vel_impresion_pub = self.create_publisher(Float64, '/gcode/vel_impresion', 10)
 
         self.declare_parameter('trayectoria_dato', 'generated_gcode_medio_estrella_poses_v3.gcode')
 
@@ -298,9 +306,10 @@ class GcodeParserNode(Node):
             self.positions_pub.publish(pos_msg)
             self.get_logger
             
-            vel_impresion_msg = String()   # TBD. concretar con encargados de extrusor + gcode
-            vel_impresion_msg.data = str(vel_impresion)
+            vel_impresion_msg = Float64()   # por ahora es Float, porque vamos a velocidad constante. 
+            vel_impresion_msg.data = float(vel_impresion)
             self.vel_impresion_pub.publish(vel_impresion_msg)
+            self.get_logger().info(f"Velocidad: {vel_impresion}")
         
             temp_cama_msg = Float64()
             temp_cama_msg.data = temp_cama
@@ -312,7 +321,7 @@ class GcodeParserNode(Node):
             self.temp_extrusor_pub.publish(temp_extrusor_msg)
             self.get_logger().info(f"temp_extrusor: {temp_extrusor}°C")
 
-            motores_on_msg = Bool()    # TBD. concretar con encargados de extrusor + gcode
+            motores_on_msg = Bool()    # Esto se enviara al extrusor justo antes de empezar a extruir
             motores_on_msg.data = bool(motores_on)
             self.motores_on_pub.publish(motores_on_msg)
 
@@ -329,22 +338,22 @@ class GcodeParserNode(Node):
 
 
 # Definir el nodo de control de temperatura. Gestiona la comunicación con Arduino y monitorea la temperatura de la cama.
-class TemperatureControllerNode(Node):
+class BedControllerNode(Node):
     def __init__(self):
-        super().__init__('temperature_controller_node')
+        super().__init__('bed_controller_node')
         
         # Suscribirse al tópico de temperatura de la cama
         self.create_subscription(Float64, '/trajectory/temp_cama', self.temp_cama_callback, 10)
-        self.create_subscription(Bool, '/trajectory/shutdown', self.shutdown_callback, 10)
+        self.create_subscription(Bool, '/shutdown', self.shutdown_callback, 10)
 
         # Publicador para la temperatura monitoreada y ack temp_ok
-        self.temp_ok_pub = self.create_publisher(Bool, '/trajectory/temp_ok', 10)
+        self.cama_ok_pub = self.create_publisher(Bool, '/check/cama_ok', 10)
         self.temp_pub = self.create_publisher(Float64, '/monitor_temp_cama', 10)
 
         self.current_temp = 0.0
-        self.timer_ = self.create_timer(10.0, self.publish_monitored_temperature)  # Publicar temperatura cada X segundos
+        self.timer_ = self.create_timer(10.0, self.publish_monitored_bed_temperature)  # Publicar temperatura cada X segundos
 
-        self.serial_port = serial.Serial('/dev/ttyACM0', 2400, timeout=1)
+        self.serial_port = serial.Serial('/dev/ttyACM1', 2400, timeout=1)
         self.get_logger().info('Puerto Serial abierto correctamente')
         
         self.publicar_temp_ok = True
@@ -362,7 +371,7 @@ class TemperatureControllerNode(Node):
                 message = self.serial_port.readline().decode().strip()
                 if message == "TEMP_OK" and self.publicar_temp_ok:
                     self.get_logger().info(f'{message}: Continuando ejecución.')
-                    self.temp_ok_pub.publish(Bool(data=True))
+                    self.cama_ok_pub.publish(Bool(data=True))
                     self.publicar_temp_ok = False    # Solo se publica una vez
                     break
                 else:
@@ -375,16 +384,100 @@ class TemperatureControllerNode(Node):
             self.serial_port.flush()
             self.serial_port.close()
 
-    def publish_monitored_temperature(self):
+    def publish_monitored_bed_temperature(self):
         if self.serial_port.in_waiting > 0:
             message = self.serial_port.readline().decode().strip()
-            self.current_temp = float(message)
-            # self.get_logger().info(f'Temperatura actual de la cama: {self.current_temp}°C')
-            temp_msg = Float64()
-            temp_msg.data = self.current_temp
-            self.temp_pub.publish(temp_msg)
+            if isinstance(message, float):
+                self.current_temp = float(message)
+                # self.get_logger().info(f'Temperatura actual de la cama: {self.current_temp}°C')
+                temp_msg = Float64()
+                temp_msg.data = self.current_temp
+                self.temp_pub.publish(temp_msg)
     
 
+
+# Definir el nodo encargado de la comunicación con el extrusor a Arduino por serial.
+class ExtruderControllerNode(Node):
+    def __init__(self):
+        super().__init__('extruder_controller_node')
+        
+        # Suscribirse al tópico de 
+        self.create_subscription(Float64, '/trajectory/temp_extrusor', self.temp_extrusor_callback, 10)
+        self.create_subscription(Float64, '/trajectory/vel_impresion', self.vel_impresion_callback, 10)
+        self.create_subscription(Bool, '/trajectory/motores_on', self.motores_on_callback,10)
+        self.create_subscription(Bool, '/shutdown', self.shutdown_callback, 10)
+        
+        # Publicador para la temperatura monitoreada y ack temp_ok TBD
+        self.extrusor_ok_pub = self.create_publisher(Bool, '/check/ext_ok', 10) 
+        self.temp_pub = self.create_publisher(Float64, '/monitor/temp_extrusor', 10) 
+
+        self.current_temp = 0.0
+        self.timer_ = self.create_timer(10.0, self.publish_monitored_ext_temperature)  # Publicar temperatura cada X segundos
+
+        self.serial_port = serial.Serial('/dev/ttyACM0', 2400, timeout=1)
+        self.get_logger().info('Puerto Serial abierto correctamente')
+        
+        self.publicar_temp_ok = True
+        self.ready_to_send = False
+        self.temp_extrusor = None
+        self.vel_impresion = None
+
+    def motores_on_callback(self,msg):
+        # Se escribe enb el serial un 1
+        self.serial_port.write(f"{Bool(msg.data)}\n".encode())
+        self.serial_port.flush()
+
+    # En cuanto se recibe la temperatura del extrusor, se envía a Arduino
+    def temp_extrusor_callback(self, msg):
+        self.temp_extrusor = float(msg.data)
+        self.get_logger().info(f'Iniciando  calentamiento del extrusor a {msg.data}°C')
+        #self.check_and_send_serial()
+
+    def vel_impresion_callback(self, msg): 
+        self.vel_impresion=float(msg.data)
+        self.get_logger().info(f'velociodad  {self.vel_impresion}°C')
+        self.check_and_send_serial()
+
+    def check_and_send_serial(self):
+        # if self.temp_extrusor is not None and self.vel_impresion is not None and self.publicar_temp_ok:
+           
+            mensaje = f"{self.temp_extrusor},{self.vel_impresion}\n"
+            self.serial_port.write(mensaje.encode())
+            self.serial_port.flush()
+            self.get_logger().info(f"Enviado al extrusor: {mensaje.strip()}")
+            self.wait_for_temperature_confirmation()
+
+    def wait_for_temperature_confirmation(self):
+        while True:
+            if self.serial_port.in_waiting > 0:
+                message = self.serial_port.readline().decode().strip()
+                if message == "TEMP_OK" and self.publicar_temp_ok:
+                    self.get_logger().info(f'{message}: Continuando ejecución.')
+                    self.extrusor_ok_pub.publish(Bool(data=True))
+                    self.publicar_temp_ok = False    # Solo se publica una vez
+                    break
+                else:
+                    self.get_logger().info(f'Temperatura actual del extrusor: {message} ºC.....Calentando')
+
+    def shutdown_callback(self,msg):
+        if msg.data:
+            self.get_logger().info("Enfriando extrusor....")
+            self.serial_port.write("OFF\n".encode())
+            self.serial_port.flush()
+            self.serial_port.close()
+
+    def publish_monitored_ext_temperature(self):
+        if self.serial_port.in_waiting > 0:
+            message = self.serial_port.readline().decode().strip()
+            try:
+                self.current_temp = float(message)
+                temp_msg = Float64()
+                temp_msg.data = self.current_temp
+                self.temp_pub.publish(temp_msg)
+            except ValueError:
+                pass  # Ignorar si no es float
+  
+    
 
 
 # Clase principal: MasterNode
@@ -412,22 +505,27 @@ class MasterNode(Node):
         # Suscripciones a topics
         self.create_subscription(String, '/gcode/positions', self.positions_callback, 10)
         self.create_subscription(Float64, '/gcode/temp_cama', self.temp_cama_callback, 10)
-        self.create_subscription(Float64, '/monitor_temp_cama', self.temp_monitor_callback, 10)
-        self.create_subscription(Bool, '/trajectory/temp_ok', self.temp_ok_callback, 10)
         self.create_subscription(Float64, '/gcode/temp_extrusor', self.temp_extrusor_callback, 10)
         self.create_subscription(Bool, '/gcode/motores_on', self.motores_on_callback, 10)
-        self.create_subscription(String, '/gcode/vel_impresion', self.vel_impresion_callback, 10)
+        self.create_subscription(Float64, '/gcode/vel_impresion', self.vel_impresion_callback, 10)    #Aunque se lee en string, por ahora, me llega un float
+        self.create_subscription(Bool, '/check/cama_ok', self.cama_ok_callback, 10)
+        self.create_subscription(Float64, '/monitor/temp_cama', self.temp_cama_monitor_callback, 10)
+        self.create_subscription(Bool, '/check/ext_ok', self.ext_ok_callback, 10)
+        self.create_subscription(Float64,'/monitor/temp_extrusor', self.temp_extrusor_monitor_callback, 10)
         
         # Publshers de topics
         self.temp_cama_pub = self.create_publisher(Float64, '/trajectory/temp_cama', 10)
-        self.shutdown_pub = self.create_publisher(Bool, '/trajectory/shutdown', 10)
+        self.shutdown_pub = self.create_publisher(Bool, '/shutdown', 10)
+        self.temp_extrusor_pub = self.create_publisher(Float64, '/trajectory/temp_extrusor', 10)
+        self.vel_impresion_pub = self.create_publisher(Float64, '/trajectory/vel_impresion', 10)
+        self.motores_on_pub=self.create_publisher(Bool, '/trajectory/motores_on',10)
 
         # inicialización de variables de control
         self.estado = "INICIO"  # Estado inicial
         self.temp_cama = Float64()
         self.temp_extrusor = Float64()
         self.cama_ok = False
-        self.extrusor_ok = True # por ahora no tenemos el nodo para esto
+        self.extrusor_ok = False 
         self.trayectoria_completada = False
         self.ejecutando = False
         self.publicar_temp = True # Se usa para detener la publicacion de la temperatura
@@ -456,14 +554,23 @@ class MasterNode(Node):
 
         elif self.estado == "SHUTDOWN":
             self.shutdown_process()
+    
+    # falta gestionar la publicacion de las velocidades de impresion. de una en una? o todo el vector y el nodo se encarga de administrrlas
 
     def setup_process(self):
         self.get_logger().info('Iniciando proceso de setup...')
-        # Enviamos la temperatura de la cama al nodo de control de temperatura
+        # Enviamos la temperatura de la cama a su encargado
         temp_cama_msg = Float64()
         temp_cama_msg.data = self.Temp_cama
         self.temp_cama_pub.publish(temp_cama_msg)
-        # Enviamos mas cosas en un futuro
+        # Enviamos la temperatura del extrusor a su nodo controlador
+        temp_extrusor_msg = Float64()
+        temp_extrusor_msg.data = self.Temp_extrusor
+        self.temp_extrusor_pub.publish(temp_extrusor_msg)
+        # Enviamos la velocidad de impresion al extrusor
+        vel_impresion_msg = Float64()
+        vel_impresion_msg.data = self.Vel_impresion
+        self.vel_impresion_pub.publish(vel_impresion_msg)
         
     def shutdown_process(self):
         if self.trayectoria_completada: # Se publica 1 topic, y todas las cosas que se tengan que apagar se suscriben a ese topic.
@@ -471,7 +578,7 @@ class MasterNode(Node):
             shutdown_msg = Bool()
             shutdown_msg.data = True
             self.shutdown_pub.publish(shutdown_msg) 
-
+    
     def positions_callback(self, msg):
         self.positions = eval(msg.data)  # Convertir de string a lista
         # self.get_logger().info(f"Recibidas posiciones desde /gcode/positions: {len(self.positions)} puntos")
@@ -480,11 +587,11 @@ class MasterNode(Node):
         # self.get_logger().info(f"Temperatura de la cama: {msg.data}°C")
         self.Temp_cama = msg.data    
     
-    def temp_monitor_callback(self, msg):
+    def temp_cama_monitor_callback(self, msg):
         if self.ejecutando:
             self.get_logger().info(f"Monitoreo de temperatura de la cama: {msg.data}°C")
 
-    def temp_ok_callback(self, msg):
+    def cama_ok_callback(self, msg):
         self.cama_ok = msg.data
         # self.get_logger().info('Temperatura de la cama alcanzada')
         if self.estado == "SETUP":
@@ -499,7 +606,18 @@ class MasterNode(Node):
 
     def vel_impresion_callback(self, msg):
         self.Vel_impresion = msg.data
-        
+
+    def ext_ok_callback(self, msg):
+        self.extrusor_ok = msg.data
+        # self.get_logger().info('Temperatura del extrusor alcanzada')
+
+    def temp_extrusor_callback(self, msg):
+        self.Temp_extrusor = msg.data
+
+    def temp_extrusor_monitor_callback(self, msg):
+        if self.ejecutando:
+            self.get_logger().info(f"Monitoreo de temperatura del extrusor: {msg.data}°C")
+    
     # Método de cálculo de trayectoria. A continuacion, se ejecuta la trayectoria. 
     def calculo_trayectoria(self):
         self.get_logger().info("Calculando trayectoria...")
@@ -519,6 +637,10 @@ class MasterNode(Node):
         # Cuando se tiene la trayectoria solución se manda ejecutar.
         if trajectory_solution:
             self.get_logger().info('Se ha calculado la trayectoria con éxito, ejecutando ...')
+            #justo antes de comenzar la ejecución, envio a los motores la orden de activarse.
+            motores_on_msg = Bool()
+            motores_on_msg.data = self.Motores_on
+            self.motores_on_pub.publish(motores_on_msg)
             self.action_client_node.execute_trajectory(trajectory_solution)
             # self.trayectoria_completada = True   #NO SE SI VA AQUI. COMO DETECTO QUE SE HA FINALIZADO?
             # self.estado = "SHUTDOWN"
@@ -540,6 +662,7 @@ class MasterNode(Node):
         # print('Se publica las señal de arrancar logger')
 
 
+
     
         
 
@@ -548,25 +671,28 @@ def main(args=None):
     rclpy.init(args=args)
 
     # Esto lo necesito ara que existan los tres a la vez, y me salgan en ros2 node list
-    trajectory_node = MasterNode()
+    master_node = MasterNode()
     gcode_parser_node = GcodeParserNode()
-    temp_controller_node = TemperatureControllerNode()
+    bed_controller_node = BedControllerNode()
+    extruder_controller_node = ExtruderControllerNode()
     #cartesian_path_node = CartesianPathNode()
     #action_client_node = MyActionClientNode()
 
     executor = MultiThreadedExecutor()
-    executor.add_node(trajectory_node)
+    executor.add_node(master_node)
     executor.add_node(gcode_parser_node)
-    executor.add_node(temp_controller_node)
+    executor.add_node(bed_controller_node)
+    executor.add_node(extruder_controller_node)
     #executor.add_node(cartesian_path_node)
     #executor.add_node(action_client_node)
 
     try:
         executor.spin()
     finally:
-        trajectory_node.destroy_node()
+        master_node.destroy_node()
         gcode_parser_node.destroy_node()
-        temp_controller_node.destroy_node()
+        bed_controller_node.destroy_node()
+        extruder_controller_node.destroy_node()
         #cartesian_path_node.destroy_node()
         #action_client_node.destroy_node()
         rclpy.shutdown()
