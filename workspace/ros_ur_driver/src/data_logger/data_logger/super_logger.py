@@ -61,7 +61,7 @@ class SuperLogger(Node):
 
         self.declare_parameter('freq', 1)
 
-        print('Estoy en super logger')
+        self.get_logger().info('Estoy en super logger')
 
 
         # Atributos propios del nodo para trabajar. Se asocian los parámetros inicalizados.
@@ -174,7 +174,7 @@ class SuperLogger(Node):
 
 
         if self.i==self.n_muestras:
-            print('FIN DEL PROCESO. PRECIONAR ctrl+C para cerrar de forma manual.')
+            self.get_logger().info('FIN DEL PROCESO. PRECIONAR ctrl+C para cerrar de forma manual.')
             self.mi_tabla=pd.DataFrame({'N_muestra':self.numero_muestra,
                                         'Marca_tiempo': self.timestamps,
                                         'q_pos': self.joint_pos,
@@ -236,7 +236,7 @@ class SuperLogger(Node):
         if resultado:
             self.read_pinA_state_aux= resultado.group(1)
         else:
-            print('No se encuentra el valor.')
+            self.get_logger().info('No se encuentra el valor.')
 
         # Se guarda la marca de tiempo de cada medida (sincornizada con el reloj del ordenador)
         # self.timestamps_aux= time.time()
@@ -252,7 +252,7 @@ class SuperLogger(Node):
         if resultado:
             self.read_pinA_state_aux= resultado.group(1)
         else:
-            print('No se encuentra el valor.')
+            self.get_logger().info('No se encuentra el valor.')
 
         
  # Método de callback para tomar datos de las salidas digitales.

@@ -40,5 +40,5 @@ def generate_launch_description():
     return LaunchDescription([
         control,
         moveit,
-        #trayectoria,
+        trayectoria,
     ])

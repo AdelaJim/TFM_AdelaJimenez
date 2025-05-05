@@ -348,14 +348,19 @@ class BedControllerNode(Node):
 
         # Publicador para la temperatura monitoreada y ack temp_ok
         self.cama_ok_pub = self.create_publisher(Bool, '/check/cama_ok', 10)
-        self.temp_pub = self.create_publisher(Float64, '/monitor_temp_cama', 10)
+        self.temp_pub = self.create_publisher(Float64, '/monitor/temp_cama', 10)
 
         self.current_temp = 0.0
         self.timer_ = self.create_timer(10.0, self.publish_monitored_bed_temperature)  # Publicar temperatura cada X segundos
 
-        self.serial_port = serial.Serial('/dev/ttyACM1', 2400, timeout=1)
-        self.get_logger().info('Puerto Serial abierto correctamente')
-        
+        try:
+            self.serial_port = serial.Serial('/dev/ttyUSB0', 2400, timeout=1)
+            self.get_logger().info('Puerto Serial abierto correctamente')
+        except serial.SerialException as e:
+            self.get_logger().error(f"Error abriendo puerto serie: {e}")
+            rclpy.shutdown()
+            sys.exit(1)
+
         self.publicar_temp_ok = True
 
     # En cuanto se recibe la temperatura de la cama, se envía a Arduino
@@ -387,13 +392,13 @@ class BedControllerNode(Node):
     def publish_monitored_bed_temperature(self):
         if self.serial_port.in_waiting > 0:
             message = self.serial_port.readline().decode().strip()
-            if isinstance(message, float):
+            try:
                 self.current_temp = float(message)
-                # self.get_logger().info(f'Temperatura actual de la cama: {self.current_temp}°C')
                 temp_msg = Float64()
                 temp_msg.data = self.current_temp
                 self.temp_pub.publish(temp_msg)
-    
+            except ValueError:
+                pass  # Ignorar si no es float
 
 
 # Definir el nodo encargado de la comunicación con el extrusor a Arduino por serial.
@@ -414,8 +419,14 @@ class ExtruderControllerNode(Node):
         self.current_temp = 0.0
         self.timer_ = self.create_timer(10.0, self.publish_monitored_ext_temperature)  # Publicar temperatura cada X segundos
 
-        self.serial_port = serial.Serial('/dev/ttyACM0', 2400, timeout=1)
-        self.get_logger().info('Puerto Serial abierto correctamente')
+        try:
+            self.serial_port = serial.Serial('/dev/ttyUSB1', 2400, timeout=1) #115200
+            self.get_logger().info('Puerto Serial abierto correctamente')
+        except serial.SerialException as e:
+            self.get_logger().error(f"Error abriendo puerto serie: {e}")
+            rclpy.shutdown()
+            sys.exit(1)
+
         
         self.publicar_temp_ok = True
         self.ready_to_send = False
@@ -424,7 +435,8 @@ class ExtruderControllerNode(Node):
 
     def motores_on_callback(self,msg):
         # Se escribe enb el serial un 1
-        self.serial_port.write(f"{Bool(msg.data)}\n".encode())
+        self.get_logger().info('Se activan los motores')
+        self.serial_port.write("EXT_OK\n".encode())
         self.serial_port.flush()
 
     # En cuanto se recibe la temperatura del extrusor, se envía a Arduino
@@ -435,12 +447,12 @@ class ExtruderControllerNode(Node):
 
     def vel_impresion_callback(self, msg): 
         self.vel_impresion=float(msg.data)
-        self.get_logger().info(f'velociodad  {self.vel_impresion}°C')
+        #self.get_logger().info(f'velociodad  {self.vel_impresion}')
         self.check_and_send_serial()
 
     def check_and_send_serial(self):
         # if self.temp_extrusor is not None and self.vel_impresion is not None and self.publicar_temp_ok:
-           
+            
             mensaje = f"{self.temp_extrusor},{self.vel_impresion}\n"
             self.serial_port.write(mensaje.encode())
             self.serial_port.flush()
@@ -493,7 +505,7 @@ class MasterNode(Node):
         self.arranca_logger = self.get_parameter('arrancar_logger').value
 
         self.publisher_ = self.create_publisher(Bool, '/arranca_logger_topic', 10)
-        self.timer_ = self.create_timer(1.0, self.publish_arranca_logger)
+        # self.timer_ = self.create_timer(1.0, self.publish_arranca_logger)
          
         # Crear un Timer para la máquina de estados (cada 1s)
         self.timer = self.create_timer(1.0, self.gestionar_flujo)
@@ -644,15 +656,19 @@ class MasterNode(Node):
             self.action_client_node.execute_trajectory(trajectory_solution)
             # self.trayectoria_completada = True   #NO SE SI VA AQUI. COMO DETECTO QUE SE HA FINALIZADO?
             # self.estado = "SHUTDOWN"
+            
+            # Mensaje interno de arrancar el logger.
+            self.get_logger().info('Se arranca el logger')
+            self.arranca_logger=True
+            self.publish_arranca_logger()
             self.get_logger().info(f"Estoy corriendo el archivo de trayectoria {self.get_parameter('trayectoria_dato').value}")
         else:
             self.get_logger().info('Fallo en el cálculo de trayectoria')
         
         # self.get_logger().info('--- FIN DE TRAYECTORIA ---')
    
-        # Mensaje interno de arrancar el logger.
-        # self.arranca_logger=True
-        self.publish_arranca_logger()
+        
+        
 
     # Método para indicar que se arranque el logger.
     def publish_arranca_logger(self):

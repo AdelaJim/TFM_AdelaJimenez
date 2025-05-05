@@ -1,6 +1,6 @@
 ; Start G-code
-M109 S200 ; extruder temperature to 200°C
-M190 S20 ; bed temperature to 60°C
+M109 S20 ; extruder temperature to 200°C
+M190 S6 ; bed temperature to 60°C
 M17 ; Start motors
 
 G1 X0.0968743656772326 Y-0.735209952012993 Z0.308492638596416 I0.260019851180486 J0.655495516128574 K-0.65599185648697 W0.269053878526572 F10

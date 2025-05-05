@@ -107,7 +107,7 @@ class DigitalReader(Node):
 
         # Aquií se guarda el CSV.
         if self.i==self.n_muestras:
-            print('Ya he tomado la muestra %d y lo guardo en un CSV' % self.i)
+            self.get_logger().info(f'Ya he tomado la muestra %d y lo guardo en un CSV' % self.i)
             self.mi_tabla=pd.DataFrame({'N_muestra':self.numero_muestra,
                                         'Marca_tiempo': self.timestamps,
                                     'DO_state:': self.read_pin_state,

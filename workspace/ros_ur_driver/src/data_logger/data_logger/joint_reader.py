@@ -77,7 +77,7 @@ class jointReader(Node):
 
 
         if self.i==self.n_muestras:
-            print('Ya he tomado la muestra %d y lo guardo en un CSV' % self.i)
+            self.get_logger().info(f'Ya he tomado la muestra %d y lo guardo en un CSV' % self.i)
             self.mi_tabla=pd.DataFrame({'N_muestra':self.numero_muestra,
                                         'Marca_tiempo': self.timestamps,
                                     'q_pos': self.joint_pos,

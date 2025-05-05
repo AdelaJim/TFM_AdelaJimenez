@@ -110,7 +110,7 @@ class AnalogReader(Node):
 
 
         if self.i==self.n_muestras:
-            print('Ya he tomado la muestra %d y lo guardo en un CSV' % self.i)
+            self.get_logger().info(f'Ya he tomado la muestra %d y lo guardo en un CSV' % self.i)
             self.mi_tabla=pd.DataFrame({'N_muestra':self.numero_muestra,
                                         'Marca_tiempo': self.timestamps,
                                     'AO_state:': self.read_pin_state,
@@ -131,7 +131,7 @@ class AnalogReader(Node):
         if resultado:
             self.read_pin_state_aux= resultado.group(1)
         else:
-            print('No se encuentra el valor.')
+            self.get_logger().info('No se encuentra el valor.')
 
         # Se guarda la marca de tiempo de cada medida (sincornizada con el reloj del ordenador)
         self.timestamps_aux= time.time()
@@ -147,7 +147,7 @@ class AnalogReader(Node):
         if resultado:
             self.read_pin_state_aux= resultado.group(1)
         else:
-            print('No se encuentra el valor.')
+            self.get_logger().info('No se encuentra el valor.')
 
         
         # Se guarda la marca de tiempo de cada medida (sincornizada con el reloj del ordenador)
