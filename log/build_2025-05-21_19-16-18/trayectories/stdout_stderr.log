@@ -1,0 +1,32 @@
+running egg_info
+writing ../../../../build/trayectories/trayectories.egg-info/PKG-INFO
+writing dependency_links to ../../../../build/trayectories/trayectories.egg-info/dependency_links.txt
+writing entry points to ../../../../build/trayectories/trayectories.egg-info/entry_points.txt
+writing requirements to ../../../../build/trayectories/trayectories.egg-info/requires.txt
+writing top-level names to ../../../../build/trayectories/trayectories.egg-info/top_level.txt
+reading manifest file '../../../../build/trayectories/trayectories.egg-info/SOURCES.txt'
+writing manifest file '../../../../build/trayectories/trayectories.egg-info/SOURCES.txt'
+running build
+running build_py
+copying trayectories/parseo_gcode.py -> /home/adela/TFM_AdelaJimenez/build/trayectories/build/lib/trayectories
+copying trayectories/move_l_gcode.py -> /home/adela/TFM_AdelaJimenez/build/trayectories/build/lib/trayectories
+copying trayectories/move_l_nodes.py -> /home/adela/TFM_AdelaJimenez/build/trayectories/build/lib/trayectories
+running install
+running install_lib
+copying /home/adela/TFM_AdelaJimenez/build/trayectories/build/lib/trayectories/parseo_gcode.py -> /home/adela/TFM_AdelaJimenez/install/trayectories/lib/python3.10/site-packages/trayectories
+copying /home/adela/TFM_AdelaJimenez/build/trayectories/build/lib/trayectories/move_l_gcode.py -> /home/adela/TFM_AdelaJimenez/install/trayectories/lib/python3.10/site-packages/trayectories
+copying /home/adela/TFM_AdelaJimenez/build/trayectories/build/lib/trayectories/move_l_nodes.py -> /home/adela/TFM_AdelaJimenez/install/trayectories/lib/python3.10/site-packages/trayectories
+byte-compiling /home/adela/TFM_AdelaJimenez/install/trayectories/lib/python3.10/site-packages/trayectories/parseo_gcode.py to parseo_gcode.cpython-310.pyc
+byte-compiling /home/adela/TFM_AdelaJimenez/install/trayectories/lib/python3.10/site-packages/trayectories/move_l_gcode.py to move_l_gcode.cpython-310.pyc
+byte-compiling /home/adela/TFM_AdelaJimenez/install/trayectories/lib/python3.10/site-packages/trayectories/move_l_nodes.py to move_l_nodes.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/adela/TFM_AdelaJimenez/install/trayectories/lib/python3.10/site-packages/trayectories-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../../../build/trayectories/trayectories.egg-info to /home/adela/TFM_AdelaJimenez/install/trayectories/lib/python3.10/site-packages/trayectories-0.0.0-py3.10.egg-info
+running install_scripts
+Installing move_joints script to /home/adela/TFM_AdelaJimenez/install/trayectories/lib/trayectories
+Installing move_l script to /home/adela/TFM_AdelaJimenez/install/trayectories/lib/trayectories
+Installing move_l_gcode script to /home/adela/TFM_AdelaJimenez/install/trayectories/lib/trayectories
+Installing move_l_nodes script to /home/adela/TFM_AdelaJimenez/install/trayectories/lib/trayectories
+Installing move_l_original script to /home/adela/TFM_AdelaJimenez/install/trayectories/lib/trayectories
+writing list of installed files to '/home/adela/TFM_AdelaJimenez/build/trayectories/install.log'

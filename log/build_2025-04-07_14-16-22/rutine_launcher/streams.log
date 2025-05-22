@@ -1,0 +1,21 @@
+[5.396s] Invoking command in '/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/rutine_launcher': PYTHONPATH=/home/adela/TFM_AdelaJimenez/build/rutine_launcher/prefix_override:/home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../../build/rutine_launcher build --build-base /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build install --record /home/adela/TFM_AdelaJimenez/build/rutine_launcher/install.log --single-version-externally-managed install_data
+[7.563s] running egg_info
+[7.591s] writing ../../../../build/rutine_launcher/rutine_launcher.egg-info/PKG-INFO
+[7.591s] writing dependency_links to ../../../../build/rutine_launcher/rutine_launcher.egg-info/dependency_links.txt
+[7.591s] writing entry points to ../../../../build/rutine_launcher/rutine_launcher.egg-info/entry_points.txt
+[7.591s] writing requirements to ../../../../build/rutine_launcher/rutine_launcher.egg-info/requires.txt
+[7.591s] writing top-level names to ../../../../build/rutine_launcher/rutine_launcher.egg-info/top_level.txt
+[7.608s] reading manifest file '../../../../build/rutine_launcher/rutine_launcher.egg-info/SOURCES.txt'
+[7.624s] writing manifest file '../../../../build/rutine_launcher/rutine_launcher.egg-info/SOURCES.txt'
+[7.628s] running build
+[7.628s] running build_py
+[7.629s] running install
+[7.629s] running install_lib
+[7.642s] running install_data
+[7.642s] running install_egg_info
+[7.644s] removing '/home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages/rutine_launcher-0.0.0-py3.10.egg-info' (and everything under it)
+[7.654s] Copying ../../../../build/rutine_launcher/rutine_launcher.egg-info to /home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages/rutine_launcher-0.0.0-py3.10.egg-info
+[7.654s] running install_scripts
+[7.768s] Installing super_logger_launcher script to /home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/rutine_launcher
+[7.776s] writing list of installed files to '/home/adela/TFM_AdelaJimenez/build/rutine_launcher/install.log'
+[7.874s] Invoked command in '/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/rutine_launcher' returned '0': PYTHONPATH=/home/adela/TFM_AdelaJimenez/build/rutine_launcher/prefix_override:/home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../../build/rutine_launcher build --build-base /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build install --record /home/adela/TFM_AdelaJimenez/build/rutine_launcher/install.log --single-version-externally-managed install_data

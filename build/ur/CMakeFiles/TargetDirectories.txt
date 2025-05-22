@@ -1,0 +1,9 @@
+/home/adela/TFM_AdelaJimenez/build/ur/CMakeFiles/uninstall.dir
+/home/adela/TFM_AdelaJimenez/build/ur/CMakeFiles/ur_uninstall.dir
+/home/adela/TFM_AdelaJimenez/build/ur/CMakeFiles/test.dir
+/home/adela/TFM_AdelaJimenez/build/ur/CMakeFiles/edit_cache.dir
+/home/adela/TFM_AdelaJimenez/build/ur/CMakeFiles/rebuild_cache.dir
+/home/adela/TFM_AdelaJimenez/build/ur/CMakeFiles/list_install_components.dir
+/home/adela/TFM_AdelaJimenez/build/ur/CMakeFiles/install.dir
+/home/adela/TFM_AdelaJimenez/build/ur/CMakeFiles/install/local.dir
+/home/adela/TFM_AdelaJimenez/build/ur/CMakeFiles/install/strip.dir

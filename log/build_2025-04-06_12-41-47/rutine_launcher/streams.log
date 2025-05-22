@@ -1,0 +1,37 @@
+[1.428s] Invoking command in '/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/rutine_launcher': PYTHONPATH=/home/adela/TFM_AdelaJimenez/build/rutine_launcher/prefix_override:/home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../../build/rutine_launcher build --build-base /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build install --record /home/adela/TFM_AdelaJimenez/build/rutine_launcher/install.log --single-version-externally-managed install_data
+[1.928s] running egg_info
+[1.929s] creating ../../../../build/rutine_launcher/rutine_launcher.egg-info
+[1.929s] writing ../../../../build/rutine_launcher/rutine_launcher.egg-info/PKG-INFO
+[1.933s] writing dependency_links to ../../../../build/rutine_launcher/rutine_launcher.egg-info/dependency_links.txt
+[1.933s] writing entry points to ../../../../build/rutine_launcher/rutine_launcher.egg-info/entry_points.txt
+[1.936s] writing requirements to ../../../../build/rutine_launcher/rutine_launcher.egg-info/requires.txt
+[1.938s] writing top-level names to ../../../../build/rutine_launcher/rutine_launcher.egg-info/top_level.txt
+[1.939s] writing manifest file '../../../../build/rutine_launcher/rutine_launcher.egg-info/SOURCES.txt'
+[1.945s] reading manifest file '../../../../build/rutine_launcher/rutine_launcher.egg-info/SOURCES.txt'
+[1.945s] writing manifest file '../../../../build/rutine_launcher/rutine_launcher.egg-info/SOURCES.txt'
+[1.946s] running build
+[1.946s] running build_py
+[1.946s] creating /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build
+[1.952s] creating /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build/lib
+[1.952s] creating /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build/lib/rutine_launcher
+[1.952s] copying rutine_launcher/super_logger_launcher.py -> /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build/lib/rutine_launcher
+[1.958s] copying rutine_launcher/__init__.py -> /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build/lib/rutine_launcher
+[1.958s] running install
+[1.958s] running install_lib
+[1.960s] creating /home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages/rutine_launcher
+[1.960s] copying /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build/lib/rutine_launcher/super_logger_launcher.py -> /home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages/rutine_launcher
+[1.960s] copying /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build/lib/rutine_launcher/__init__.py -> /home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages/rutine_launcher
+[1.960s] byte-compiling /home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages/rutine_launcher/super_logger_launcher.py to super_logger_launcher.cpython-310.pyc
+[1.965s] byte-compiling /home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages/rutine_launcher/__init__.py to __init__.cpython-310.pyc
+[1.965s] running install_data
+[1.966s] creating /home/adela/TFM_AdelaJimenez/install/rutine_launcher/share/ament_index
+[1.966s] creating /home/adela/TFM_AdelaJimenez/install/rutine_launcher/share/ament_index/resource_index
+[1.967s] creating /home/adela/TFM_AdelaJimenez/install/rutine_launcher/share/ament_index/resource_index/packages
+[1.967s] copying resource/rutine_launcher -> /home/adela/TFM_AdelaJimenez/install/rutine_launcher/share/ament_index/resource_index/packages
+[1.969s] copying package.xml -> /home/adela/TFM_AdelaJimenez/install/rutine_launcher/share/rutine_launcher
+[1.969s] running install_egg_info
+[1.972s] Copying ../../../../build/rutine_launcher/rutine_launcher.egg-info to /home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages/rutine_launcher-0.0.0-py3.10.egg-info
+[1.974s] running install_scripts
+[2.020s] Installing super_logger_launcher script to /home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/rutine_launcher
+[2.022s] writing list of installed files to '/home/adela/TFM_AdelaJimenez/build/rutine_launcher/install.log'
+[2.103s] Invoked command in '/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/rutine_launcher' returned '0': PYTHONPATH=/home/adela/TFM_AdelaJimenez/build/rutine_launcher/prefix_override:/home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../../build/rutine_launcher build --build-base /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build install --record /home/adela/TFM_AdelaJimenez/build/rutine_launcher/install.log --single-version-externally-managed install_data

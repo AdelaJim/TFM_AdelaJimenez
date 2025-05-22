@@ -1,0 +1,33 @@
+running egg_info
+writing ../../../../build/conversion_datos/conversion_datos.egg-info/PKG-INFO
+writing dependency_links to ../../../../build/conversion_datos/conversion_datos.egg-info/dependency_links.txt
+writing entry points to ../../../../build/conversion_datos/conversion_datos.egg-info/entry_points.txt
+writing requirements to ../../../../build/conversion_datos/conversion_datos.egg-info/requires.txt
+writing top-level names to ../../../../build/conversion_datos/conversion_datos.egg-info/top_level.txt
+reading manifest file '../../../../build/conversion_datos/conversion_datos.egg-info/SOURCES.txt'
+writing manifest file '../../../../build/conversion_datos/conversion_datos.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/adela/TFM_AdelaJimenez/build/conversion_datos/build
+creating /home/adela/TFM_AdelaJimenez/build/conversion_datos/build/lib
+creating /home/adela/TFM_AdelaJimenez/build/conversion_datos/build/lib/conversion_datos
+copying conversion_datos/convertir_en_gcode.py -> /home/adela/TFM_AdelaJimenez/build/conversion_datos/build/lib/conversion_datos
+copying conversion_datos/__init__.py -> /home/adela/TFM_AdelaJimenez/build/conversion_datos/build/lib/conversion_datos
+copying conversion_datos/convertir_en_articulares.py -> /home/adela/TFM_AdelaJimenez/build/conversion_datos/build/lib/conversion_datos
+running install
+running install_lib
+creating /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos
+copying /home/adela/TFM_AdelaJimenez/build/conversion_datos/build/lib/conversion_datos/convertir_en_gcode.py -> /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos
+copying /home/adela/TFM_AdelaJimenez/build/conversion_datos/build/lib/conversion_datos/__init__.py -> /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos
+copying /home/adela/TFM_AdelaJimenez/build/conversion_datos/build/lib/conversion_datos/convertir_en_articulares.py -> /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos
+byte-compiling /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos/convertir_en_gcode.py to convertir_en_gcode.cpython-310.pyc
+byte-compiling /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos/convertir_en_articulares.py to convertir_en_articulares.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../../../build/conversion_datos/conversion_datos.egg-info to /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos-0.0.0-py3.10.egg-info
+running install_scripts
+Installing convertir_en_articulares script to /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/conversion_datos
+Installing convertir_en_gcode script to /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/conversion_datos
+writing list of installed files to '/home/adela/TFM_AdelaJimenez/build/conversion_datos/install.log'

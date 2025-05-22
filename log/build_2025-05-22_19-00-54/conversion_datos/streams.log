@@ -1,0 +1,35 @@
+[6.817s] Invoking command in '/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/conversion_datos': PYTHONPATH=/home/adela/TFM_AdelaJimenez/build/conversion_datos/prefix_override:/home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../../build/conversion_datos build --build-base /home/adela/TFM_AdelaJimenez/build/conversion_datos/build install --record /home/adela/TFM_AdelaJimenez/build/conversion_datos/install.log --single-version-externally-managed install_data
+[9.640s] running egg_info
+[9.657s] writing ../../../../build/conversion_datos/conversion_datos.egg-info/PKG-INFO
+[9.658s] writing dependency_links to ../../../../build/conversion_datos/conversion_datos.egg-info/dependency_links.txt
+[9.665s] writing entry points to ../../../../build/conversion_datos/conversion_datos.egg-info/entry_points.txt
+[9.671s] writing requirements to ../../../../build/conversion_datos/conversion_datos.egg-info/requires.txt
+[9.674s] writing top-level names to ../../../../build/conversion_datos/conversion_datos.egg-info/top_level.txt
+[9.695s] reading manifest file '../../../../build/conversion_datos/conversion_datos.egg-info/SOURCES.txt'
+[9.722s] writing manifest file '../../../../build/conversion_datos/conversion_datos.egg-info/SOURCES.txt'
+[9.723s] running build
+[9.728s] running build_py
+[9.728s] creating /home/adela/TFM_AdelaJimenez/build/conversion_datos/build
+[9.729s] creating /home/adela/TFM_AdelaJimenez/build/conversion_datos/build/lib
+[9.729s] creating /home/adela/TFM_AdelaJimenez/build/conversion_datos/build/lib/conversion_datos
+[9.730s] copying conversion_datos/convertir_en_gcode.py -> /home/adela/TFM_AdelaJimenez/build/conversion_datos/build/lib/conversion_datos
+[9.733s] copying conversion_datos/__init__.py -> /home/adela/TFM_AdelaJimenez/build/conversion_datos/build/lib/conversion_datos
+[9.733s] copying conversion_datos/convertir_en_articulares.py -> /home/adela/TFM_AdelaJimenez/build/conversion_datos/build/lib/conversion_datos
+[9.743s] running install
+[9.752s] running install_lib
+[9.785s] creating /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos
+[9.785s] copying /home/adela/TFM_AdelaJimenez/build/conversion_datos/build/lib/conversion_datos/convertir_en_gcode.py -> /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos
+[9.785s] copying /home/adela/TFM_AdelaJimenez/build/conversion_datos/build/lib/conversion_datos/__init__.py -> /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos
+[9.785s] copying /home/adela/TFM_AdelaJimenez/build/conversion_datos/build/lib/conversion_datos/convertir_en_articulares.py -> /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos
+[9.786s] byte-compiling /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos/convertir_en_gcode.py to convertir_en_gcode.cpython-310.pyc
+[9.786s] byte-compiling /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos/__init__.py to __init__.cpython-310.pyc
+[9.786s] byte-compiling /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos/convertir_en_articulares.py to convertir_en_articulares.cpython-310.pyc
+[9.796s] running install_data
+[9.796s] running install_egg_info
+[9.830s] removing '/home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos-0.0.0-py3.10.egg-info' (and everything under it)
+[9.839s] Copying ../../../../build/conversion_datos/conversion_datos.egg-info to /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos-0.0.0-py3.10.egg-info
+[9.845s] running install_scripts
+[10.023s] Installing convertir_en_articulares script to /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/conversion_datos
+[10.023s] Installing convertir_en_gcode script to /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/conversion_datos
+[10.024s] writing list of installed files to '/home/adela/TFM_AdelaJimenez/build/conversion_datos/install.log'
+[10.184s] Invoked command in '/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/conversion_datos' returned '0': PYTHONPATH=/home/adela/TFM_AdelaJimenez/build/conversion_datos/prefix_override:/home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../../build/conversion_datos build --build-base /home/adela/TFM_AdelaJimenez/build/conversion_datos/build install --record /home/adela/TFM_AdelaJimenez/build/conversion_datos/install.log --single-version-externally-managed install_data

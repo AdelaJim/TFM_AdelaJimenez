@@ -1,0 +1,201 @@
+[0.025s] Invoking command in '/home/adela/TFM_AdelaJimenez/build/ur_robot_driver': AMENT_PREFIX_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers:/home/adela/TFM_AdelaJimenez/install/ur_description:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers:/home/adela/TFM_AdelaJimenez/install/ur_description:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_calibration:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_bringup:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_description:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_controllers:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_calibration:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_bringup:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_description:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_controllers:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/workspace/ros_ur_driver/install/ur:/home/adela/workspace/ros_ur_driver/install/ur_calibration:/home/adela/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/workspace/ros_ur_driver/install/ur_bringup:/home/adela/workspace/ros_ur_driver/install/ur_description:/home/adela/workspace/ros_ur_driver/install/ur_controllers:/home/adela/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/trayectories:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/rutine_launcher:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/data_logger:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/build_platform:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/trayectories:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/rutine_launcher:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/data_logger:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/build_platform:/opt/ros/humble LD_LIBRARY_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers/lib:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/Universal_Robots_ROS2_Driver/ur_robot_driver -DCMAKE_INSTALL_PREFIX=/home/adela/TFM_AdelaJimenez/install/ur_robot_driver
+[0.174s] -- The C compiler identification is GNU 11.4.0
+[0.261s] -- The CXX compiler identification is GNU 11.4.0
+[0.293s] -- Detecting C compiler ABI info
+[0.483s] -- Detecting C compiler ABI info - done
+[0.499s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.499s] -- Detecting C compile features
+[0.500s] -- Detecting C compile features - done
+[0.505s] -- Detecting CXX compiler ABI info
+[0.736s] -- Detecting CXX compiler ABI info - done
+[0.745s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.745s] -- Detecting CXX compile features
+[0.746s] -- Detecting CXX compile features - done
+[0.751s] [0mur_robot_driver: You did not request a specific build type: selecting 'RelWithDebInfo'.[0m
+[0.758s] -- Found ament_cmake: 1.3.8 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.245s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.506s] -- Found backward_ros: 1.0.2 (/opt/ros/humble/share/backward_ros/cmake)
+[1.524s] -- Found libdw: /usr/lib/x86_64-linux-gnu/libdw.so  
+[1.539s] -- Could NOT find libbfd (missing: LIBBFD_LIBRARY LIBBFD_INCLUDE_DIR) 
+[1.539s] -- BACKWARD_HAS_UNWIND=1
+[1.539s] -- BACKWARD_HAS_BACKTRACE=0
+[1.539s] -- BACKWARD_HAS_BACKTRACE_SYMBOL=0
+[1.540s] -- BACKWARD_HAS_DW=1
+[1.540s] -- BACKWARD_HAS_BFD=0
+[1.540s] -- Found Backward: /opt/ros/humble/share/backward_ros/cmake  
+[1.556s] -- Found controller_manager: 2.40.0 (/opt/ros/humble/share/controller_manager/cmake)
+[1.697s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.714s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.736s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.790s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.859s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.005s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[3.007s] -- Found rmw_fastrtps_cpp: 6.2.6 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[3.082s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[3.176s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[3.181s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[3.198s] -- Found FastRTPS: /opt/ros/humble/include  
+[3.214s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[3.226s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[3.242s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[3.271s] -- Looking for pthread.h
+[3.429s] -- Looking for pthread.h - found
+[3.429s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[3.588s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[3.589s] -- Found Threads: TRUE  
+[4.526s] -- Found rclpy: 3.3.15 (/opt/ros/humble/share/rclpy/cmake)
+[4.532s] -- Found std_srvs: 4.2.3 (/opt/ros/humble/share/std_srvs/cmake)
+[4.559s] -- Found tf2_geometry_msgs: 0.25.6 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+[4.604s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[4.608s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[4.615s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[5.090s] -- Found ur_dashboard_msgs: 2.2.10 (/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs/share/ur_dashboard_msgs/cmake)
+[8.693s] -- Found ur_controllers: 2.2.10 (/home/adela/TFM_AdelaJimenez/install/ur_controllers/share/ur_controllers/cmake)
+[8.900s] -- Found parameter_traits: 0.3.8 (/opt/ros/humble/share/parameter_traits/cmake)
+[9.941s] -- Found ur_description: 2.1.3 (/home/adela/TFM_AdelaJimenez/install/ur_description/share/ur_description/cmake)
+[9.947s] -- Found launch_testing_ament_cmake: 1.0.5 (/opt/ros/humble/share/launch_testing_ament_cmake/cmake)
+[9.953s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[9.989s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[9.997s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[9.997s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[9.997s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[9.997s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[10.032s] -- Found PythonExtra: .so  
+[10.034s] -- Configuring done
+[10.188s] -- Generating done
+[10.197s] -- Build files have been written to: /home/adela/TFM_AdelaJimenez/build/ur_robot_driver
+[10.210s] Invoked command in '/home/adela/TFM_AdelaJimenez/build/ur_robot_driver' returned '0': AMENT_PREFIX_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers:/home/adela/TFM_AdelaJimenez/install/ur_description:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers:/home/adela/TFM_AdelaJimenez/install/ur_description:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_calibration:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_bringup:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_description:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_controllers:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_calibration:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_bringup:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_description:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_controllers:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/workspace/ros_ur_driver/install/ur:/home/adela/workspace/ros_ur_driver/install/ur_calibration:/home/adela/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/workspace/ros_ur_driver/install/ur_bringup:/home/adela/workspace/ros_ur_driver/install/ur_description:/home/adela/workspace/ros_ur_driver/install/ur_controllers:/home/adela/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/trayectories:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/rutine_launcher:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/data_logger:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/build_platform:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/trayectories:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/rutine_launcher:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/data_logger:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/build_platform:/opt/ros/humble LD_LIBRARY_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers/lib:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/Universal_Robots_ROS2_Driver/ur_robot_driver -DCMAKE_INSTALL_PREFIX=/home/adela/TFM_AdelaJimenez/install/ur_robot_driver
+[10.214s] Invoking command in '/home/adela/TFM_AdelaJimenez/build/ur_robot_driver': AMENT_PREFIX_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers:/home/adela/TFM_AdelaJimenez/install/ur_description:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers:/home/adela/TFM_AdelaJimenez/install/ur_description:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_calibration:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_bringup:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_description:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_controllers:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_calibration:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_bringup:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_description:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_controllers:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/workspace/ros_ur_driver/install/ur:/home/adela/workspace/ros_ur_driver/install/ur_calibration:/home/adela/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/workspace/ros_ur_driver/install/ur_bringup:/home/adela/workspace/ros_ur_driver/install/ur_description:/home/adela/workspace/ros_ur_driver/install/ur_controllers:/home/adela/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/trayectories:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/rutine_launcher:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/data_logger:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/build_platform:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/trayectories:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/rutine_launcher:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/data_logger:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/build_platform:/opt/ros/humble LD_LIBRARY_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers/lib:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/adela/TFM_AdelaJimenez/build/ur_robot_driver -- -j2 -l2
+[10.299s] [  6%] [32mBuilding CXX object CMakeFiles/ur_robot_driver_plugin.dir/src/dashboard_client_ros.cpp.o[0m
+[43.796s] [ 13%] [32mBuilding CXX object CMakeFiles/ur_robot_driver_plugin.dir/src/hardware_interface.cpp.o[0m
+[49.898s] [01m[K/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/Universal_Robots_ROS2_Driver/ur_robot_driver/src/hardware_interface.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::CallbackReturn ur_robot_driver::URPositionHardwareInterface::on_configure(const rclcpp_lifecycle::State&)[m[K’:
+[49.898s] [01m[K/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/Universal_Robots_ROS2_Driver/ur_robot_driver/src/hardware_interface.cpp:432:34:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid urcl::UrDriver::setKeepaliveCount(uint32_t)[m[K’ is deprecated: Set keepaliveCount is deprecated, instead set the robot receive timeout directly in the write commands. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+[49.898s]   432 |     [01;35m[Kur_driver_->setKeepaliveCount(keep_alive_count)[m[K;
+[49.898s]       |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~[m[K
+[49.899s] In file included from [01m[K/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/Universal_Robots_ROS2_Driver/ur_robot_driver/include/ur_robot_driver/hardware_interface.hpp:55[m[K,
+[49.899s]                  from [01m[K/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/Universal_Robots_ROS2_Driver/ur_robot_driver/src/hardware_interface.cpp:50[m[K:
+[49.899s] [01m[K/opt/ros/humble/include/ur_client_library/ur/ur_driver.h:461:3:[m[K [01;36m[Knote: [m[Kdeclared here
+[49.899s]   461 |   [01;36m[KsetKeepaliveCount[m[K(const uint32_t count);
+[49.899s]       |   [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[59.709s] [ 20%] [32mBuilding CXX object CMakeFiles/ur_robot_driver_plugin.dir/src/urcl_log_handler.cpp.o[0m
+[60.521s] [ 26%] [32mBuilding CXX object CMakeFiles/dashboard_client.dir/src/dashboard_client_ros.cpp.o[0m
+[60.798s] [ 33%] [32m[1mLinking CXX shared library libur_robot_driver_plugin.so[0m
+[61.689s] [ 33%] Built target ur_robot_driver_plugin
+[61.735s] [ 40%] [32mBuilding CXX object CMakeFiles/ur_ros2_control_node.dir/src/ur_ros2_control_node.cpp.o[0m
+[72.624s] [ 46%] [32m[1mLinking CXX executable ur_ros2_control_node[0m
+[73.050s] [ 46%] Built target ur_ros2_control_node
+[73.098s] [ 53%] [32mBuilding CXX object CMakeFiles/controller_stopper_node.dir/src/controller_stopper.cpp.o[0m
+[104.150s] [ 60%] [32mBuilding CXX object CMakeFiles/dashboard_client.dir/src/dashboard_client_node.cpp.o[0m
+[111.083s] [ 66%] [32mBuilding CXX object CMakeFiles/controller_stopper_node.dir/src/controller_stopper_node.cpp.o[0m
+[115.276s] [ 73%] [32mBuilding CXX object CMakeFiles/dashboard_client.dir/src/urcl_log_handler.cpp.o[0m
+[116.671s] [ 80%] [32m[1mLinking CXX executable dashboard_client[0m
+[117.424s] [ 80%] Built target dashboard_client
+[118.963s] [ 86%] [32m[1mLinking CXX executable controller_stopper_node[0m
+[119.496s] [ 86%] Built target controller_stopper_node
+[119.532s] [ 93%] [32mBuilding CXX object CMakeFiles/urscript_interface.dir/src/urscript_interface.cpp.o[0m
+[140.674s] [100%] [32m[1mLinking CXX executable urscript_interface[0m
+[141.384s] [100%] Built target urscript_interface
+[141.442s] [100%] Built target ament_cmake_python_copy_ur_robot_driver
+[141.831s] running egg_info
+[141.831s] creating ur_robot_driver.egg-info
+[141.831s] writing ur_robot_driver.egg-info/PKG-INFO
+[141.832s] writing dependency_links to ur_robot_driver.egg-info/dependency_links.txt
+[141.832s] writing top-level names to ur_robot_driver.egg-info/top_level.txt
+[141.833s] writing manifest file 'ur_robot_driver.egg-info/SOURCES.txt'
+[141.836s] reading manifest file 'ur_robot_driver.egg-info/SOURCES.txt'
+[141.837s] writing manifest file 'ur_robot_driver.egg-info/SOURCES.txt'
+[141.881s] [100%] Built target ament_cmake_python_build_ur_robot_driver_egg
+[141.899s] Invoked command in '/home/adela/TFM_AdelaJimenez/build/ur_robot_driver' returned '0': AMENT_PREFIX_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers:/home/adela/TFM_AdelaJimenez/install/ur_description:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers:/home/adela/TFM_AdelaJimenez/install/ur_description:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_calibration:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_bringup:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_description:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_controllers:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_calibration:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_bringup:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_description:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_controllers:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/workspace/ros_ur_driver/install/ur:/home/adela/workspace/ros_ur_driver/install/ur_calibration:/home/adela/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/workspace/ros_ur_driver/install/ur_bringup:/home/adela/workspace/ros_ur_driver/install/ur_description:/home/adela/workspace/ros_ur_driver/install/ur_controllers:/home/adela/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/trayectories:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/rutine_launcher:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/data_logger:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/build_platform:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/trayectories:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/rutine_launcher:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/data_logger:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/build_platform:/opt/ros/humble LD_LIBRARY_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers/lib:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/adela/TFM_AdelaJimenez/build/ur_robot_driver -- -j2 -l2
+[141.983s] Invoking command in '/home/adela/TFM_AdelaJimenez/build/ur_robot_driver': AMENT_PREFIX_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers:/home/adela/TFM_AdelaJimenez/install/ur_description:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers:/home/adela/TFM_AdelaJimenez/install/ur_description:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_calibration:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_bringup:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_description:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_controllers:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_calibration:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_bringup:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_description:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_controllers:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/workspace/ros_ur_driver/install/ur:/home/adela/workspace/ros_ur_driver/install/ur_calibration:/home/adela/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/workspace/ros_ur_driver/install/ur_bringup:/home/adela/workspace/ros_ur_driver/install/ur_description:/home/adela/workspace/ros_ur_driver/install/ur_controllers:/home/adela/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/trayectories:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/rutine_launcher:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/data_logger:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/build_platform:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/trayectories:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/rutine_launcher:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/data_logger:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/build_platform:/opt/ros/humble LD_LIBRARY_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers/lib:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/adela/TFM_AdelaJimenez/build/ur_robot_driver
+[141.994s] -- Install configuration: "RelWithDebInfo"
+[141.994s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/hardware_interface_plugin.xml
+[141.996s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/lib/ur_robot_driver/dashboard_client
+[142.010s] -- Set runtime path of "/home/adela/TFM_AdelaJimenez/install/ur_robot_driver/lib/ur_robot_driver/dashboard_client" to ""
+[142.010s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/lib/ur_robot_driver/ur_ros2_control_node
+[142.017s] -- Set runtime path of "/home/adela/TFM_AdelaJimenez/install/ur_robot_driver/lib/ur_robot_driver/ur_ros2_control_node" to ""
+[142.017s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/lib/ur_robot_driver/controller_stopper_node
+[142.035s] -- Set runtime path of "/home/adela/TFM_AdelaJimenez/install/ur_robot_driver/lib/ur_robot_driver/controller_stopper_node" to ""
+[142.036s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/lib/ur_robot_driver/urscript_interface
+[142.048s] -- Set runtime path of "/home/adela/TFM_AdelaJimenez/install/ur_robot_driver/lib/ur_robot_driver/urscript_interface" to ""
+[142.048s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/lib/libur_robot_driver_plugin.so
+[142.079s] -- Set runtime path of "/home/adela/TFM_AdelaJimenez/install/ur_robot_driver/lib/libur_robot_driver_plugin.so" to ""
+[142.079s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/include
+[142.079s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/include/ur_robot_driver
+[142.079s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/include/ur_robot_driver/hardware_interface.hpp
+[142.079s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/include/ur_robot_driver/urcl_log_handler.hpp
+[142.080s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/include/ur_robot_driver/controller_stopper.hpp
+[142.080s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/include/ur_robot_driver/dashboard_client_ros.hpp
+[142.080s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/environment/library_path.sh
+[142.080s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/environment/library_path.dsv
+[142.081s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/resources
+[142.081s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/resources/rtde_output_recipe.txt
+[142.082s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/resources/ros_control.urscript
+[142.082s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/resources/rs485-1.0.urcap
+[142.084s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/resources/rtde_input_recipe.txt
+[142.084s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/resources/externalcontrol-1.0.5.urcap
+[142.085s] -- Up-to-date: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/include
+[142.086s] -- Up-to-date: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/include/ur_robot_driver
+[142.086s] -- Up-to-date: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/include/ur_robot_driver/hardware_interface.hpp
+[142.086s] -- Up-to-date: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/include/ur_robot_driver/urcl_log_handler.hpp
+[142.086s] -- Up-to-date: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/include/ur_robot_driver/controller_stopper.hpp
+[142.086s] -- Up-to-date: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/include/ur_robot_driver/dashboard_client_ros.hpp
+[142.087s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/environment/pythonpath.sh
+[142.087s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/environment/pythonpath.dsv
+[142.087s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/local/lib/python3.10/dist-packages/ur_robot_driver-2.2.10-py3.10.egg-info
+[142.087s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/local/lib/python3.10/dist-packages/ur_robot_driver-2.2.10-py3.10.egg-info/dependency_links.txt
+[142.087s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/local/lib/python3.10/dist-packages/ur_robot_driver-2.2.10-py3.10.egg-info/PKG-INFO
+[142.087s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/local/lib/python3.10/dist-packages/ur_robot_driver-2.2.10-py3.10.egg-info/top_level.txt
+[142.087s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/local/lib/python3.10/dist-packages/ur_robot_driver-2.2.10-py3.10.egg-info/SOURCES.txt
+[142.087s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/local/lib/python3.10/dist-packages/ur_robot_driver
+[142.087s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/local/lib/python3.10/dist-packages/ur_robot_driver/__init__.py
+[142.143s] Listing '/home/adela/TFM_AdelaJimenez/install/ur_robot_driver/local/lib/python3.10/dist-packages/ur_robot_driver'...
+[142.143s] Compiling '/home/adela/TFM_AdelaJimenez/install/ur_robot_driver/local/lib/python3.10/dist-packages/ur_robot_driver/__init__.py'...
+[142.150s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/lib/ur_robot_driver/tool_communication.py
+[142.150s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/bin/wait_dashboard_server.sh
+[142.152s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/lib/ur_robot_driver/start_ursim.sh
+[142.153s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/config
+[142.153s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/config/ur20_update_rate.yaml
+[142.154s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/config/ur3e_update_rate.yaml
+[142.154s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/config/ur10e_update_rate.yaml
+[142.157s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/config/ur3_update_rate.yaml
+[142.157s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/config/test_velocity_goal_publishers_config.yaml
+[142.158s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/config/ur16e_update_rate.yaml
+[142.158s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/config/ur_controllers.yaml
+[142.160s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/config/test_goal_publishers_config.yaml
+[142.161s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/config/ur5_update_rate.yaml
+[142.162s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/config/ur5e_update_rate.yaml
+[142.164s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/config/ur10_update_rate.yaml
+[142.164s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/launch
+[142.165s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/launch/test_joint_trajectory_controller.launch.py
+[142.165s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/launch/ur20.launch.py
+[142.166s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/launch/ur10.launch.py
+[142.166s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/launch/ur16e.launch.py
+[142.166s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/launch/ur_control.launch.py
+[142.166s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/launch/test_forward_velocity_controller.launch.py
+[142.167s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/launch/ur_dashboard_client.launch.py
+[142.167s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/launch/ur3e.launch.py
+[142.167s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/launch/ur10e.launch.py
+[142.168s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/launch/ur5.launch.py
+[142.168s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/launch/ur3.launch.py
+[142.168s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/launch/ur5e.launch.py
+[142.168s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/launch/test_scaled_joint_trajectory_controller.launch.py
+[142.169s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ament_index/resource_index/package_run_dependencies/ur_robot_driver
+[142.169s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ament_index/resource_index/parent_prefix_path/ur_robot_driver
+[142.170s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/environment/ament_prefix_path.sh
+[142.170s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/environment/ament_prefix_path.dsv
+[142.170s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/environment/path.sh
+[142.171s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/environment/path.dsv
+[142.171s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/local_setup.bash
+[142.171s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/local_setup.sh
+[142.172s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/local_setup.zsh
+[142.172s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/local_setup.dsv
+[142.172s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/package.dsv
+[142.173s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ament_index/resource_index/packages/ur_robot_driver
+[142.173s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/ur_robot_driver
+[142.173s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/cmake/ament_cmake_export_include_directories-extras.cmake
+[142.173s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/cmake/ament_cmake_export_libraries-extras.cmake
+[142.174s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/cmake/ament_cmake_export_dependencies-extras.cmake
+[142.174s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/cmake/ur_robot_driverConfig.cmake
+[142.175s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/cmake/ur_robot_driverConfig-version.cmake
+[142.178s] -- Installing: /home/adela/TFM_AdelaJimenez/install/ur_robot_driver/share/ur_robot_driver/package.xml
+[142.180s] Invoked command in '/home/adela/TFM_AdelaJimenez/build/ur_robot_driver' returned '0': AMENT_PREFIX_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers:/home/adela/TFM_AdelaJimenez/install/ur_description:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers:/home/adela/TFM_AdelaJimenez/install/ur_description:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_calibration:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_bringup:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_description:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_controllers:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_calibration:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_bringup:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_description:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_controllers:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/workspace/ros_ur_driver/install/ur:/home/adela/workspace/ros_ur_driver/install/ur_calibration:/home/adela/workspace/ros_ur_driver/install/ur_robot_driver:/home/adela/workspace/ros_ur_driver/install/ur_moveit_config:/home/adela/workspace/ros_ur_driver/install/ur_bringup:/home/adela/workspace/ros_ur_driver/install/ur_description:/home/adela/workspace/ros_ur_driver/install/ur_controllers:/home/adela/workspace/ros_ur_driver/install/ur_dashboard_msgs:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/trayectories:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/rutine_launcher:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/data_logger:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/build_platform:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/trayectories:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/rutine_launcher:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/data_logger:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/build_platform:/opt/ros/humble LD_LIBRARY_PATH=/home/adela/TFM_AdelaJimenez/install/ur_controllers/lib:/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/adela/TFM_AdelaJimenez/install/ur_dashboard_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/adela/TFM_AdelaJimenez/build/ur_robot_driver

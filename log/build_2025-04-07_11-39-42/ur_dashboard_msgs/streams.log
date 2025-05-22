@@ -1,0 +1,5 @@
+[0.111s] Invoking command in '/home/adela/TFM_AdelaJimenez/build/ur_dashboard_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/trayectories:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/rutine_launcher:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/data_logger:/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/install/build_platform:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/trayectories:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/rutine_launcher:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/data_logger:/home/adela/TFM_MiguelLerinAlonso/workspace/ros_ur_driver/install/build_platform:/opt/ros/humble /usr/bin/cmake --build /home/adela/TFM_AdelaJimenez/build/ur_dashboard_msgs -- -j2 -l2
+[0.417s] [  0%] Built target ur_dashboard_msgs__cpp
+[0.519s] [ 12%] Built target ur_dashboard_msgs__rosidl_generator_c
+[0.714s] gmake[1]: *** [CMakeFiles/Makefile2:422: CMakeFiles/ament_cmake_python_copy_ur_dashboard_msgs.dir/all] Interrupt
+[0.715s] gmake: *** [Makefile:146: all] Interrupt

@@ -1,0 +1,3 @@
+[console_scripts]
+super_logger_launcher = rutine_launcher.super_logger_launcher:main
+

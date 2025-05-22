@@ -1,0 +1,27 @@
+[5.072s] Invoking command in '/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/data_logger': PYTHONPATH=/home/adela/TFM_AdelaJimenez/build/data_logger/prefix_override:/home/adela/TFM_AdelaJimenez/install/data_logger/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../../build/data_logger build --build-base /home/adela/TFM_AdelaJimenez/build/data_logger/build install --record /home/adela/TFM_AdelaJimenez/build/data_logger/install.log --single-version-externally-managed install_data
+[6.787s] running egg_info
+[6.796s] writing ../../../../build/data_logger/data_logger.egg-info/PKG-INFO
+[6.798s] writing dependency_links to ../../../../build/data_logger/data_logger.egg-info/dependency_links.txt
+[6.803s] writing entry points to ../../../../build/data_logger/data_logger.egg-info/entry_points.txt
+[6.803s] writing requirements to ../../../../build/data_logger/data_logger.egg-info/requires.txt
+[6.804s] writing top-level names to ../../../../build/data_logger/data_logger.egg-info/top_level.txt
+[6.812s] reading manifest file '../../../../build/data_logger/data_logger.egg-info/SOURCES.txt'
+[6.824s] writing manifest file '../../../../build/data_logger/data_logger.egg-info/SOURCES.txt'
+[6.825s] running build
+[6.829s] running build_py
+[6.831s] running install
+[6.831s] running install_lib
+[6.848s] running install_data
+[6.848s] running install_egg_info
+[6.861s] removing '/home/adela/TFM_AdelaJimenez/install/data_logger/lib/python3.10/site-packages/data_logger-0.0.0-py3.10.egg-info' (and everything under it)
+[6.867s] Copying ../../../../build/data_logger/data_logger.egg-info to /home/adela/TFM_AdelaJimenez/install/data_logger/lib/python3.10/site-packages/data_logger-0.0.0-py3.10.egg-info
+[6.880s] running install_scripts
+[7.045s] Installing analog_reader script to /home/adela/TFM_AdelaJimenez/install/data_logger/lib/data_logger
+[7.045s] Installing data_emitter script to /home/adela/TFM_AdelaJimenez/install/data_logger/lib/data_logger
+[7.046s] Installing data_reader script to /home/adela/TFM_AdelaJimenez/install/data_logger/lib/data_logger
+[7.046s] Installing digital_reader script to /home/adela/TFM_AdelaJimenez/install/data_logger/lib/data_logger
+[7.048s] Installing joint_reader script to /home/adela/TFM_AdelaJimenez/install/data_logger/lib/data_logger
+[7.048s] Installing multi_logger script to /home/adela/TFM_AdelaJimenez/install/data_logger/lib/data_logger
+[7.048s] Installing super_logger script to /home/adela/TFM_AdelaJimenez/install/data_logger/lib/data_logger
+[7.052s] writing list of installed files to '/home/adela/TFM_AdelaJimenez/build/data_logger/install.log'
+[7.247s] Invoked command in '/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/data_logger' returned '0': PYTHONPATH=/home/adela/TFM_AdelaJimenez/build/data_logger/prefix_override:/home/adela/TFM_AdelaJimenez/install/data_logger/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../../build/data_logger build --build-base /home/adela/TFM_AdelaJimenez/build/data_logger/build install --record /home/adela/TFM_AdelaJimenez/build/data_logger/install.log --single-version-externally-managed install_data

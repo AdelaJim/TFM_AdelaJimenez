@@ -1,0 +1,35 @@
+running egg_info
+creating ../../../../build/rutine_launcher/rutine_launcher.egg-info
+writing ../../../../build/rutine_launcher/rutine_launcher.egg-info/PKG-INFO
+writing dependency_links to ../../../../build/rutine_launcher/rutine_launcher.egg-info/dependency_links.txt
+writing entry points to ../../../../build/rutine_launcher/rutine_launcher.egg-info/entry_points.txt
+writing requirements to ../../../../build/rutine_launcher/rutine_launcher.egg-info/requires.txt
+writing top-level names to ../../../../build/rutine_launcher/rutine_launcher.egg-info/top_level.txt
+writing manifest file '../../../../build/rutine_launcher/rutine_launcher.egg-info/SOURCES.txt'
+reading manifest file '../../../../build/rutine_launcher/rutine_launcher.egg-info/SOURCES.txt'
+writing manifest file '../../../../build/rutine_launcher/rutine_launcher.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build
+creating /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build/lib
+creating /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build/lib/rutine_launcher
+copying rutine_launcher/super_logger_launcher.py -> /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build/lib/rutine_launcher
+copying rutine_launcher/__init__.py -> /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build/lib/rutine_launcher
+running install
+running install_lib
+creating /home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages/rutine_launcher
+copying /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build/lib/rutine_launcher/super_logger_launcher.py -> /home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages/rutine_launcher
+copying /home/adela/TFM_AdelaJimenez/build/rutine_launcher/build/lib/rutine_launcher/__init__.py -> /home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages/rutine_launcher
+byte-compiling /home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages/rutine_launcher/super_logger_launcher.py to super_logger_launcher.cpython-310.pyc
+byte-compiling /home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages/rutine_launcher/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/adela/TFM_AdelaJimenez/install/rutine_launcher/share/ament_index
+creating /home/adela/TFM_AdelaJimenez/install/rutine_launcher/share/ament_index/resource_index
+creating /home/adela/TFM_AdelaJimenez/install/rutine_launcher/share/ament_index/resource_index/packages
+copying resource/rutine_launcher -> /home/adela/TFM_AdelaJimenez/install/rutine_launcher/share/ament_index/resource_index/packages
+copying package.xml -> /home/adela/TFM_AdelaJimenez/install/rutine_launcher/share/rutine_launcher
+running install_egg_info
+Copying ../../../../build/rutine_launcher/rutine_launcher.egg-info to /home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/python3.10/site-packages/rutine_launcher-0.0.0-py3.10.egg-info
+running install_scripts
+Installing super_logger_launcher script to /home/adela/TFM_AdelaJimenez/install/rutine_launcher/lib/rutine_launcher
+writing list of installed files to '/home/adela/TFM_AdelaJimenez/build/rutine_launcher/install.log'

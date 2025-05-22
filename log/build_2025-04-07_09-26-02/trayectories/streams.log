@@ -1,0 +1,28 @@
+[5.397s] Invoking command in '/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/trayectories': PYTHONPATH=/home/adela/TFM_AdelaJimenez/build/trayectories/prefix_override:/home/adela/TFM_AdelaJimenez/install/trayectories/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../../build/trayectories build --build-base /home/adela/TFM_AdelaJimenez/build/trayectories/build install --record /home/adela/TFM_AdelaJimenez/build/trayectories/install.log --single-version-externally-managed install_data
+[7.330s] running egg_info
+[7.332s] writing ../../../../build/trayectories/trayectories.egg-info/PKG-INFO
+[7.336s] writing dependency_links to ../../../../build/trayectories/trayectories.egg-info/dependency_links.txt
+[7.342s] writing entry points to ../../../../build/trayectories/trayectories.egg-info/entry_points.txt
+[7.345s] writing requirements to ../../../../build/trayectories/trayectories.egg-info/requires.txt
+[7.346s] writing top-level names to ../../../../build/trayectories/trayectories.egg-info/top_level.txt
+[7.375s] reading manifest file '../../../../build/trayectories/trayectories.egg-info/SOURCES.txt'
+[7.384s] writing manifest file '../../../../build/trayectories/trayectories.egg-info/SOURCES.txt'
+[7.385s] running build
+[7.385s] running build_py
+[7.389s] copying trayectories/move_l_nodes.py -> /home/adela/TFM_AdelaJimenez/build/trayectories/build/lib/trayectories
+[7.392s] running install
+[7.398s] running install_lib
+[7.403s] copying /home/adela/TFM_AdelaJimenez/build/trayectories/build/lib/trayectories/move_l_nodes.py -> /home/adela/TFM_AdelaJimenez/install/trayectories/lib/python3.10/site-packages/trayectories
+[7.415s] byte-compiling /home/adela/TFM_AdelaJimenez/install/trayectories/lib/python3.10/site-packages/trayectories/move_l_nodes.py to move_l_nodes.cpython-310.pyc
+[7.448s] running install_data
+[7.448s] running install_egg_info
+[7.478s] removing '/home/adela/TFM_AdelaJimenez/install/trayectories/lib/python3.10/site-packages/trayectories-0.0.0-py3.10.egg-info' (and everything under it)
+[7.481s] Copying ../../../../build/trayectories/trayectories.egg-info to /home/adela/TFM_AdelaJimenez/install/trayectories/lib/python3.10/site-packages/trayectories-0.0.0-py3.10.egg-info
+[7.499s] running install_scripts
+[7.638s] Installing move_joints script to /home/adela/TFM_AdelaJimenez/install/trayectories/lib/trayectories
+[7.638s] Installing move_l script to /home/adela/TFM_AdelaJimenez/install/trayectories/lib/trayectories
+[7.638s] Installing move_l_gcode script to /home/adela/TFM_AdelaJimenez/install/trayectories/lib/trayectories
+[7.639s] Installing move_l_nodes script to /home/adela/TFM_AdelaJimenez/install/trayectories/lib/trayectories
+[7.641s] Installing move_l_original script to /home/adela/TFM_AdelaJimenez/install/trayectories/lib/trayectories
+[7.642s] writing list of installed files to '/home/adela/TFM_AdelaJimenez/build/trayectories/install.log'
+[7.821s] Invoked command in '/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/trayectories' returned '0': PYTHONPATH=/home/adela/TFM_AdelaJimenez/build/trayectories/prefix_override:/home/adela/TFM_AdelaJimenez/install/trayectories/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../../build/trayectories build --build-base /home/adela/TFM_AdelaJimenez/build/trayectories/build install --record /home/adela/TFM_AdelaJimenez/build/trayectories/install.log --single-version-externally-managed install_data

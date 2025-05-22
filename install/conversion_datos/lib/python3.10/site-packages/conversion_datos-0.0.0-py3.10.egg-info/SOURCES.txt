@@ -1,0 +1,14 @@
+package.xml
+setup.cfg
+setup.py
+../../../../build/conversion_datos/conversion_datos.egg-info/PKG-INFO
+../../../../build/conversion_datos/conversion_datos.egg-info/SOURCES.txt
+../../../../build/conversion_datos/conversion_datos.egg-info/dependency_links.txt
+../../../../build/conversion_datos/conversion_datos.egg-info/entry_points.txt
+../../../../build/conversion_datos/conversion_datos.egg-info/requires.txt
+../../../../build/conversion_datos/conversion_datos.egg-info/top_level.txt
+../../../../build/conversion_datos/conversion_datos.egg-info/zip-safe
+conversion_datos/__init__.py
+conversion_datos/convertir_en_articulares.py
+conversion_datos/convertir_en_gcode.py
+resource/conversion_datos

@@ -1,0 +1,20 @@
+[6.630s] Invoking command in '/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/conversion_datos': PYTHONPATH=/home/adela/TFM_AdelaJimenez/build/conversion_datos/prefix_override:/home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../../build/conversion_datos build --build-base /home/adela/TFM_AdelaJimenez/build/conversion_datos/build install --record /home/adela/TFM_AdelaJimenez/build/conversion_datos/install.log --single-version-externally-managed install_data
+[9.146s] running egg_info
+[9.167s] writing ../../../../build/conversion_datos/conversion_datos.egg-info/PKG-INFO
+[9.167s] writing dependency_links to ../../../../build/conversion_datos/conversion_datos.egg-info/dependency_links.txt
+[9.167s] writing entry points to ../../../../build/conversion_datos/conversion_datos.egg-info/entry_points.txt
+[9.181s] writing requirements to ../../../../build/conversion_datos/conversion_datos.egg-info/requires.txt
+[9.181s] writing top-level names to ../../../../build/conversion_datos/conversion_datos.egg-info/top_level.txt
+[9.200s] reading manifest file '../../../../build/conversion_datos/conversion_datos.egg-info/SOURCES.txt'
+[9.215s] writing manifest file '../../../../build/conversion_datos/conversion_datos.egg-info/SOURCES.txt'
+[9.216s] running build
+[9.216s] running install
+[9.216s] running install_data
+[9.216s] running install_egg_info
+[9.244s] removing '/home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos-0.0.0-py3.10.egg-info' (and everything under it)
+[9.263s] Copying ../../../../build/conversion_datos/conversion_datos.egg-info to /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages/conversion_datos-0.0.0-py3.10.egg-info
+[9.263s] running install_scripts
+[9.475s] Installing convertir_en_articulares script to /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/conversion_datos
+[9.476s] Installing convertir_en_gcode script to /home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/conversion_datos
+[9.491s] writing list of installed files to '/home/adela/TFM_AdelaJimenez/build/conversion_datos/install.log'
+[9.873s] Invoked command in '/home/adela/TFM_AdelaJimenez/workspace/ros_ur_driver/src/conversion_datos' returned '0': PYTHONPATH=/home/adela/TFM_AdelaJimenez/build/conversion_datos/prefix_override:/home/adela/TFM_AdelaJimenez/install/conversion_datos/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../../build/conversion_datos build --build-base /home/adela/TFM_AdelaJimenez/build/conversion_datos/build install --record /home/adela/TFM_AdelaJimenez/build/conversion_datos/install.log --single-version-externally-managed install_data

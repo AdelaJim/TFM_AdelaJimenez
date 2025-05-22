@@ -1,0 +1,4 @@
+[  0%] Built target ur_dashboard_msgs__cpp
+[ 12%] Built target ur_dashboard_msgs__rosidl_generator_c
+gmake[1]: *** [CMakeFiles/Makefile2:422: CMakeFiles/ament_cmake_python_copy_ur_dashboard_msgs.dir/all] Interrupt
+gmake: *** [Makefile:146: all] Interrupt
