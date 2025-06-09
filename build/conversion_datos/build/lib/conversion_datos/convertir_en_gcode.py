@@ -1,7 +1,8 @@
 #  Si no está instalado: 
 #  https://www.python.org/downloads/
 #  pip install pandas
-#  Para lanzarlo: python convertir_en_gcode.py muelle_w3.csv muelle_w3.gcode --temp_extrusor 195 --temp_cama 60 --velocidad 80
+#  Para lanzarlo: 
+#  python convertir_en_gcode.py muelle_w3.csv muelle_w3.gcode --temp_extrusor 195 --temp_cama 60 --velocidad 80
 
 import pandas as pd    
 import argparse

@@ -359,6 +359,7 @@ class BedControllerNode(Node):
         self.timer_ = self.create_timer(10.0, self.publish_monitored_bed_temperature)  # Publicar temperatura cada X segundos
 
         try:
+            #self.serial_port = serial.Serial('/dev/ttyACM1', 2400, timeout=1)
             self.serial_port = serial.Serial('/dev/ttyUSB0', 2400, timeout=1)
             self.get_logger().info('Puerto Serial abierto correctamente')
         except serial.SerialException as e:
@@ -425,7 +426,8 @@ class ExtruderControllerNode(Node):
         self.timer_ = self.create_timer(10.0, self.publish_monitored_ext_temperature)  # Publicar temperatura cada X segundos
 
         try:
-            self.serial_port = serial.Serial('/dev/ttyUSB1', 115200, timeout=1) #115200
+            #self.serial_port = serial.Serial('/dev/ttyACM0', 2400, timeout=1)
+            self.serial_port = serial.Serial('/dev/ttyUSB1', 115200, timeout=1) 
             self.get_logger().info('Puerto Serial abierto correctamente')
         except serial.SerialException as e:
             self.get_logger().error(f"Error abriendo puerto serie: {e}")
