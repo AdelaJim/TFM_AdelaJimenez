@@ -1,4 +1,0 @@
-[console_scripts]
-convertir_en_articulares = conversion_datos.convertir_en_articulares:main
-convertir_en_gcode = conversion_datos.convertir_en_gcode:main
-

@@ -1,6 +1,0 @@
-source;share/conversion_datos/hook/pythonpath.ps1
-source;share/conversion_datos/hook/pythonpath.dsv
-source;share/conversion_datos/hook/pythonpath.sh
-source;share/conversion_datos/hook/ament_prefix_path.ps1
-source;share/conversion_datos/hook/ament_prefix_path.dsv
-source;share/conversion_datos/hook/ament_prefix_path.sh

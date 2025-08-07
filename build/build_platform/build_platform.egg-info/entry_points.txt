@@ -1,5 +1,0 @@
-[console_scripts]
-arduino_communicator_v2 = build_platform.arduino_communicator_v2:main
-messages = build_platform.messages:main
-serial_reader_v2 = build_platform.serial_reader_v2:main
-
