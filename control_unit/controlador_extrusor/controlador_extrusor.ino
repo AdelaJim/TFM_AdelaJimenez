@@ -1,4 +1,4 @@
-//Archivos para pines
+  //Archivos para pines
 #include "Pines_Fire_Beetle_2.h"
 #include "Conf_pines.h"
 #include "Parametros_Controlador.h"
